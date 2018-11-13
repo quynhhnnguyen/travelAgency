@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<!-- Theme Made By www.w3schools.com -->
 		<title>Sunshine Travel Agency</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -50,7 +49,7 @@
 		</div>
 		
 		<!-- Container (Travel Packages Section) -->
-		<div id="travelPackages" class="container-fluid tabContent"  w3-include-html="travelPackages.html">
+		<div id="travelPackages" class="container-fluid tabContent"  w3-include-html="travelPackages.html" style="display:none">
 
 		</div>
 		
@@ -80,6 +79,7 @@
 		
 		<!--Navigation script from W3School-->
 		<script>
+		var isTravelPackageLoaded = false;
 		$(document).ready(function(){
 		  // Add smooth scrolling to all links in navbar + footer link
 		  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
@@ -92,6 +92,11 @@
 					case "#travelPackages": 
 						document.getElementById("headerMessage").innerHTML = "Travel Packages";
 						elementDisplay("travelPackages");
+						debugger;
+						if(!isTravelPackageLoaded) {
+							loadImagesAndDescriptionsToTable();
+							isTravelPackageLoaded = true;
+						}
 						break;
 					
 					case "#registrations": 
@@ -108,10 +113,7 @@
 					default: 
 						debugger;
 						document.getElementById("headerMessage").innerHTML = "Welcome to Sunshine Travel Agency";
-						elementDisplay("home");
-						if(loadImagesAndDescriptionsToTable()!=null) {
-							loadImagesAndDescriptionsToTable();
-						}
+						elementDisplay("home");						
 						break;
 					
 				}

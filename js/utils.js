@@ -86,7 +86,7 @@ var images = ["/study/img/lakelouise.jpg", "/study/img/morainelake.jpg", "/study
 			var timer = null;
 			
 			function loadImagesAndDescriptionsToTable() {
-				debugger;
+				//debugger;
 				if(doExist("imageTable")) {
 							
 					var table = document.getElementById("imageTable");
