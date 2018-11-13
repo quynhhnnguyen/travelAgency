@@ -1,105 +1,51 @@
 /*display object on the same row*/
-.travelimage, .logoresize, .welcomesentence, #contact,
-#register, #agentinfo, #agentimg {
+#welcomesentence, .logoresize, .headercontainer, .footercontainer, 
+.article_img, .article_content, .div_img, .article_content  {
 		display: inline-block;
 }
 
-.welcomesentence {
-	color: red;
+.headercontainer, .footercontainer {
+	color:white;
+	width:100%;
 }
 
-/*should resize the image's resolution by graphic app before adjusting the size here to optimize the memory's usage*/
-.travelimage, #travelimg1 img, #travelimg2 img, #travelimg3 img {
-		width: 100px;
-		height: 75px;
-		text-align: center;
+.logoresize {
+	float: left;
 }
 
-.logoresize img {
-	height: 150px;
+.article_img, .article_content {
+	width:100%;
+}
+.maintopiccontainer {
+	background-color: gray;
 }
 
-#contact img, #register img, #agentimg img {
-		width: 75px;
-		height: 75px;
-		text-align: center;
+#welcomesentence {
+	float: right;
+	color:white;
+	    margin-top: 20px;
 }
 
-
-#headofficediv, #navigatorcontainer, #travelimg1, 
-#travelimg2, #travelimg3 {
-	text-align: center;
+.author_name {
+	font-size: 24px;
 }
 
-/* Tooltip container */
-.tooltip {
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+.article_content img {
+	width:100px;
+	height:100px;
 }
 
-/* Tooltip text */
-.tooltip .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
- 
-    /* Position the tooltip text - see examples below! */
-    position: absolute;
-    z-index: 1;
+.blog_summary {
+	width:100%;
 }
 
-/* Show the tooltip text when you mouse over the tooltip container */
-.tooltip:hover .tooltiptext {
-    visibility: visible;
+.footercontainer img {
+	width:50px;
+	height:50px;
+	float: right;
 }
-
-.copyright {
-	color: white;
-	text-align: center;
-}
-
-.background {
-	/*background: lightgreen;*/
-	color: white;
-	background-image: url(/img/headerbackground.jpg);
-}
-
-.headercontainer {
-	background-image: url(../img/graphics-planes-picgifscom.gif);
-	height: 170px;
-}
-
-/*a.set1.link means object.class.behavior*/
-
-.bodycontainer {}
-
-.footercontainer {}
 
 .missingInfo {
 	color:red;
-	font-style: italic;
-}
-
-.labelStyle {
-	font-weight: bold;
-	text-align: right;
-}
-
-.imageTableStyle {
-
-}
-
-#movingItem {
-	position: absolute;
-	left: 0px;
-	top: 120px
-}
-
-.movingContainer {
-	height: 100px;
+	font-style: bold;
 }

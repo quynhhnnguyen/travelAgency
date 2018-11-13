@@ -1,20 +1,9 @@
-<!DOCTYPE html>
+<!--DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8"/>
-		<meta name="viewpoint" content="width=device-width, initial-scale=1"/>
-		<!-- initial-scale: zoom -->
-		<link rel="stylesheet" type="text/css" href="/css/css.css"></link>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-		<script src="/js/utils.js"></script>
-		
-		<title>Happy Together Travel Agency</title>
-		
+	<head-->
+	
 		<script>
-			var images = ["/img/lakelouise.jpg", "/img/morainelake.jpg", "/img/minnewanka.jpg"];
+			var images = ["/study/img/lakelouise.jpg", "/study/img/morainelake.jpg", "/study/img/minnewanka.jpg"];
 			var linkWebsites = ["https://www.banfflakelouise.com/lake-louise", "https://www.banfflakelouise.com/moraine-lake", "https://www.banfflakelouise.com/lake-minnewanka"];
 			var descriptions = ["Lake Louise is world famous for its turquoise lakes, the Victoria Glacier, soaring mountain backdrop, palatial hotel, and incredible hiking and skiing. Surrounded by a lifetime’s worth of jaw-dropping sights and adventures, Lake Louise is a rare place that must be experienced to be believed.",
 								"Its waters are the most amazing colour, a vivid shade of turquoise that changes in intensity through the summer as the glaciers melt. Set in the rugged Valley of the Ten Peaks, Moraine Lake is surrounded by mountains, waterfalls, and rock piles, creating a scene so stunning it almost seems unreal. Sit lakeside and absorb the sights and pure mountain air, or explore further by canoeing and hiking. It’s an iconically jaw-dropping place that is sure to leave a lasting impression.",
@@ -26,7 +15,7 @@
 			var timer = null;
 			
 			function loadImagesAndDescriptionsToTable() {
-
+				debugger;
 				if(doExist("imageTable")) {
 							
 					var table = document.getElementById("imageTable");
@@ -101,17 +90,14 @@
 		</script>
 
 	</head>
-	
-	<body class="background col-sm-12" onload="loadImagesAndDescriptionsToTable(); setInterval(doItemMovement, 100)">
+		<!--//setInterval(doItemMovement, 100)-->
+	<!--body class="background col-sm-12" onload="loadImagesAndDescriptionsToTable()"-->
 		<!-- pre: keep the format as our decoration in File such as text in multi-lines - we don't need to add tag br -->
-		<div id="headercontainer" class="headercontainer">
-			<!--div id="logo" class="logoresize"><img src="/img/plane.jpg" alt="Happy Together Travel Agency"/></div-->
-			<div id="movingItem" class="welcomesentence"><h1>Welcome to Travel Experts</h1></div>
-		</div>
-
-		<hr/>
+		<script>
+			$(document).ready(loadImagesAndDescriptionsToTable());
+		</script>
 		<main>
-			<section >
+			<section>
 				<div id="contentcontainer" class="col-sm-12 table-responsive"> 
 					<table class="table table-dark table-hover imageTableStyle" id="imageTable">
 						<thead>
@@ -132,14 +118,12 @@
 			<hr/>
 			<section>
 				<div id="navigatorcontainer"> 
-					<div id="contact"><a href="/contact.html"><img src="/img/contacticon.jpg"/></a></div>
-					<div id="register"><a href="/register.html"><img src="/img/registericon.jpg"/></a></div>
+					<div id="contact"><a href="/contact.html"><img src="/study/img/contacticon.jpg"/></a></div>
+					<div id="register"><a href="/register.html"><img src="/study/img/registericon.jpg"/></a></div>
 				</div>
 			</section>
 			
 		</main>
-		
-		<hr/>
-		<div class="copyright">This page copyrighted &copy; by Happy Together Travel Agency</div>
-	</body>
-</html>
+
+	<!--/body>
+</html-->
