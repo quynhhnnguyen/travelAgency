@@ -1,6 +1,27 @@
-<!--DOCTYPE html>
+<?php
+	include "header.php";
+	
+	//set value to activeTab by session variable
+	$_SESSION["activeTab"] = "registrationsTab";
+	
+	//navigations
+	include "menu.php";
+	
+?>
+<!DOCTYPE html>
 <html>
 	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<link rel="stylesheet" type="text/css" href="/study/css/css.css"></link>
+		
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+		
+		<script src="/study/js/utils.js"></script>
 		
 		<style>
 		    //input[value] { background-color:blue }
@@ -20,7 +41,7 @@
 				background-color: green;
 				color: yellow;
 			}
-		</style-->
+		</style>
 		
 		<script>
 		
@@ -81,15 +102,15 @@
 			
 		</script>
 
-		<!--title>Happy Together Travel Agency</title>
+		<title>Happy Together Travel Agency</title>
 	</head>
 	
 	<body class="background" onload="setInterval(doItemMovement, 100)">
-		<!--div id="headercontainer" class="headercontainer"-->
+		<div id="headercontainer" class="headercontainer">
 			<!--div id="logo" class="logoresize"><img src="/study/img/plane.jpg" alt="Happy Together Travel Agency"/></div-->
-			<!--div id="movingItem" class="welcomesentence"><h1>Registration</h1></div>
+			<div id="movingItem" class="welcomesentence"><h1>Registration</h1></div>
 		</div>
-		<hr/-->
+		<hr/>
 		<div class="col-sm-6 rounded shadow-lg p-4 mb-4 bg-black">
 			<form method="post" action="bouncer.php" id="custInfo">
 				<div>
@@ -205,8 +226,12 @@
 			</form>
 		</div>
 		<br/>
-		<div><a href="/mainPage.html">Back to Home Page</a></div>
+		<div><a href="/index.html">Back to Home Page</a></div>
 		<hr/>
-		<!--div class="copyright">This page copyrighted &copy; by Happy Together Travel Agency</div-->
-	<!--/body>
-</html-->
+		<div class="copyright">This page copyrighted &copy; by Happy Together Travel Agency</div>
+	</body>
+</html>
+<!-- footer -->		
+<?php
+	include "footer.php";
+?>

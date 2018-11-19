@@ -1,51 +1,165 @@
-/*display object on the same row*/
-#welcomesentence, .logoresize, .headercontainer, .footercontainer, 
-.article_img, .article_content, .div_img, .article_content  {
-		display: inline-block;
+ body {
+    font: 400 15px Lato, sans-serif;
+    line-height: 1.8;
+    /*color: #818181;*/
+	color: white;
+	background-color: black;
+ }
+  
+ h2 {
+    font-size: 24px;
+    text-transform: uppercase;
+    color: #303030;
+    font-weight: 600;
+    margin-bottom: 30px;
+ }
+  
+ h4 {
+    font-size: 19px;
+    line-height: 1.375em;
+    color: #303030;
+    font-weight: 400;
+    margin-bottom: 30px;
+ }  
+  
+ .container-fluid {
+    padding: 60px 50px;
+ }
+  
+ .logo {
+    color: #f4511e;
+    font-size: 200px;
+ }
+ 
+ .navbar-brand img, .logoImage {
+	position: absolute;
+	width: 75px;
+	height: 75px;
+	display: inline-block;
+ }
+ 
+ .inlineDisplay {
+	display: inline-block;
+ }
+ 
+ .welcomeText {
+	padding-left: 90px;
+    padding-top: 50px;
+ }
+ 
+ .navbar-brand-override {
+	height: 100px;
+ }
+ 
+ .nav-override {
+	padding-top: 50px;
+ }
+ 
+ .tabContent {
+	padding-top: 100px;
+ }
+ 
+ .tip {
+	visibility: hidden;
+	position: absolute;
+	left: 30%;
+	background-color: green;
+	color: yellow;
 }
 
-.headercontainer, .footercontainer {
-	color:white;
-	width:100%;
+.contentPaddingDiv {
+	padding-top: 50px;
 }
 
-.logoresize {
-	float: left;
+.agenciesDiv {
+	height: 380px;
+	overflow: auto;
 }
 
-.article_img, .article_content {
-	width:100%;
-}
-.maintopiccontainer {
-	background-color: gray;
-}
-
-#welcomesentence {
-	float: right;
-	color:white;
-	    margin-top: 20px;
+.agentsDiv {
+	height: 340px;
+	overflow-x: auto;
+	margin: 20px 50px;
 }
 
-.author_name {
-	font-size: 24px;
+.navbar {
+    margin-bottom: 0;
+    background-color: #f4511e;
+    z-index: 9999;
+    border: 0;
+    font-size: 12px !important;
+    line-height: 1.42857143 !important;
+    letter-spacing: 4px;
+    border-radius: 0;
+    font-family: Montserrat, sans-serif;
+}
+ 
+.navbar li a, .navbar .navbar-brand {
+    color: #fff !important;
+}
+ 
+.navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #f4511e !important;
+    background-color: #fff !important;
+}
+ 
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #fff !important;
+}
+  
+footer .glyphicon {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #f4511e;
+}
+ 
+.agentWell {
+	background-color: #fcf8e3;
+	color: blue;
+	height: 320px;
+    width: 280px;
+	margin-left: 15px;
+	padding-top: 50px;
+	text-align: center;
+}
+ 
+.bannerDiv {
+	/*forest photo*/
+	background-image: url(/img/forest.jpg);
+	height: 200px;
+}
+ 
+.halfTopBodyDiv {
+	/*raindeer photo*/
+	background-image: url(/img/banner3.jpg);
+	border-radius: 6px;
+}
+ 
+.footerDiv {
+	margin-top: 10px;
 }
 
-.article_content img {
-	width:100px;
-	height:100px;
+.agentImg {
+		width: 75px;
+		height: 75px;
+		text-align: center;
 }
 
-.blog_summary {
-	width:100%;
+.socialIcon {
+	width: 45px;
+	height: 45px;
+	text-align: center;
 }
 
-.footercontainer img {
-	width:50px;
-	height:50px;
-	float: right;
+.socialMenu {
+	text-align: center;
+	height: 55px;
+	vertical-align: middle;
 }
 
-.missingInfo {
-	color:red;
-	font-style: bold;
+.authenticationIcon {
+	width: 100px;
+	height: 45px;
+	text-align: center;
 }
