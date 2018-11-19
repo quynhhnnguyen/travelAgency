@@ -1,6 +1,7 @@
 # travelAgency
 Building the Travel Agency Website with PHP, My SQL, CSS (Bootstrap), Javascript ...
 
+Name:: Dream Land Travel Agency
 
 Registrations Page by Peter
 
