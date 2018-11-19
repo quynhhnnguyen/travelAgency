@@ -15,7 +15,7 @@
 	function getDBConnection() {
 		global $dbh;
 		if(!$dbh) {
-			$dbh = mysqli_connect("localhost", "quynhhnnguyen", "2$@turN&e@rth1", "travelexperts");
+			$dbh = mysqli_connect("localhost", "sa", "sa", "travelexperts");
 			if(!$dbh) {
 				print("Connection failed: " . mysqli_connect_errno() . "--" . mysqli_connect_error() . "<br/>");
 				exit;
