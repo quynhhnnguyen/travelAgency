@@ -86,8 +86,9 @@ img {vertical-align: middle;}
 </head>
 <body>
 
-<!--<h2>Automatic Slideshow</h2>
-<p>Change image every 2 seconds:</p>-->
+<!-- Images Dimentions should be 1350x200 or little bit more otherwise
+it won't fit. It will take the whole page, So if anyone wants to change
+the Images Please consider the dimentions Thanks-->
 
 <div class="slideshow-container">
 
