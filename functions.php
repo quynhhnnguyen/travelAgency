@@ -1,5 +1,7 @@
 <?php
 
+	require_once('variables.php');
+
 	$action = $_POST['action'];
 	print_r($_POST);
 	switch ($action) {
@@ -65,6 +67,37 @@
 		}
 		
 		//return values;
-		//return $aarray;
+		return $aarray;
+	}
+	
+	function authentication() {
+	
+	
+		$inputValue = array("userName" => "", "password" => "");
+		$inputValue = getDataForm($inputValue);
+	
+		$accountDB = getUserAccountInfo($inputValue['userName']);
+	
+		$encryptPassword = 
+	
+		//encryption
+		/* md5(String password);*/
+		if (password_verify ($inputValue['password'] , $accountDB -> password) {
+			switch($accountDB -> roleId) {
+				case roles['Admin']: //redirect to Agent Entry Page (Home Page & active Agent Entry link)
+					break;
+				case roles['End-User']: //redirect to Home Page & active the profile link
+					break;
+			}
+
+			
+		} 
+		
+		//decryption
+		/*$password = 'examplepassword';
+		$crypted = password_hash($password, PASSWORD_DEFAULT);*/
+		
+		//authentication false, stay at this page & notify to user.
+
 	}
 ?>

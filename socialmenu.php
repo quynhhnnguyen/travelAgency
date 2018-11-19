@@ -12,5 +12,5 @@
 		<a href="#"><img class="socialIcon" src="/img/instagram.png"/></a>
 		<a href="#"><img class="socialIcon" src="/img/snapchat.png"/></a>
 		<a href="#"><img class="authenticationIcon" src="/img/sign_up.png"/></a>
-		<a href="#"><img class="authenticationIcon" src="/img/login4.png"/></a>
+		<a href="login.php"><img class="authenticationIcon" src="/img/login4.png"/></a>
 	</div>

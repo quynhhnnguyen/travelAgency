@@ -6,10 +6,10 @@
 		Summary: Home Page.
 	*/
 	include "header.php";
-
+	
 	//set value to activeTab by session variable
 	$_SESSION["activeTab"] = "homeTab";
-
+	
 	//navigations
 	include "menu.php";
 ?>
