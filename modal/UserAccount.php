@@ -2,6 +2,8 @@
 	/*
 		Author: Quynh Nguyen (queeniehnnguyen)
 		Date created: Nov - 19 - 2018.
+		Course Module: CPRG-210-OSD - Web Application Development - PHP and MySQL
+		Assignment#: CPRG210 Exercises Day 12
 		Summary: implement object UserAccount 
 			for authentication use.
 	*/
@@ -14,10 +16,16 @@
 		public $password = "";
 		public $roleId = 0;
 		
-		function serUserAccount($account) {
+		function setUserAccount($account) {
 			$this -> userName = $account -> userName;
 			$this -> password = $account -> password;
 			$this -> roleId = $account -> roleId;
+		}
+		
+		function setUserAccountFromArray($account) {
+			$this -> userName = $account['userName'];
+			$this -> password = $account['password'];
+			$this -> roleId = $account['roleId'];
 		}
 	}
 	

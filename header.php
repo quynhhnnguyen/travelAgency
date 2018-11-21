@@ -1,13 +1,19 @@
 <?php
 	/*
 		Author: Quynh Nguyen (quynhnnguyen)
-		Date created: Nov - 14 - 2018.
+		Date created: Nov - 15 - 2018.
+		Course Module: CPRG-210-OSD - Web Application Development - PHP and MySQL
+		Assignment#: CPRG210 Exercises Day 9 
 		Summary: construct the Header Section 
 				to include all necessary libraries for CSS and JavaScript.
 	*/
 	
-	session_start();
 	include "sqlfunctions.php";
+		
+	//initialize SESSION
+	//session_cache_expire(30);
+	//session_start();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

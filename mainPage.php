@@ -1,8 +1,18 @@
 <!-- header -->
 <?php 
 	/*
-		Author: Maryam Munir
-		Date created: Nov - 19 - 2018.
+		Initialized by: Quynh Nguyen
+		Date created: Nov - 14 - 2018.
+		Course Module: CPRG-210-OSD - Web Application Development - PHP and MySQL
+		Assignment#: CPRG210 Exercises Day 8
+
+		Modified: Nov - 15 - 2018.
+		Assignment#: CPRG210 Exercises Day 9 
+				(Separated header, footer, menu to different php files & include them back via include function)
+				
+		Modified: Maryam Munir
+		Date modified: Nov - 19 - 2018.
+
 		Summary: Home Page.
 	*/
 	include "header.php";

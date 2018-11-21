@@ -1,4 +1,16 @@
-
+<?php
+	/*
+		Author: Quynh Nguyen (queeniehnnguyen)
+		Date created: Nov - 15 - 2018.
+		Course Module: CPRG-210-OSD - Web Application Development - PHP and MySQL
+		Assignment#: CPRG210 Exercises Day 9
+		Summary: implement main menu (navigations).
+			Home
+			Travel Packages
+			Registrations
+			Contact Us
+	*/
+?>
 		<nav class="navbar navbar-default">
 			<div class="container">
 				<div class="navbar-header">

@@ -2,6 +2,13 @@
 	/*
 		Author: Quynh Nguyen (queeniehnnguyen)
 		Date created: Nov - 14 - 2018.
+		Course Module: CPRG-210-OSD - Web Application Development - PHP and MySQL
+		Assignment#: CPRG210 Exercises Day 8
+		
+		Modified: Nov - 15 - 2018.
+		Assignment#: CPRG210 Exercises Day 9 
+				(Separated header, footer, menu to different php files & include them back via include function)
+		
 		Summary: construct the Contact Page 
 				to provide information about Agencies and Agents.
 	*/
@@ -22,9 +29,13 @@
 <div class="container-fluid text-center">
 	<!-- input question form -->
 	<div class="contentPaddingDiv col-sm-7 slideanim slide">
-		<form method="post" id="customerQuestion">
+		<form method="post" id="customerQuestion" action="functions.php">
 				<div>
-				<p id="tipThank" style="display:none">Thank you for sending us the question. We will answer as soon as possible.</p>
+				<?php
+					if(isset($_SESSION['message'])) {
+						print "<h3 style='color:red, background-color:yellow'>" . $_SESSION['message'] . "</h3>";
+					}
+				?>
 
 					<div class="halfTopBodyDiv">
 						<br/>
@@ -35,7 +46,7 @@
 						<br/>
 						<br/>
 					</div>
-					<input type="hidden" id="action" name="action" value="sendquestion"></input>
+					<input type="hidden" id="action" name="action" value="sendQuestion"></input>
 					<div id="table1">				
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -125,9 +136,10 @@ print "</div>";
 	//testInsertFunction();
 ?>
 </div>
+</div>
 <script>
 	//sending email without redirecting page
-	$('#customerQuestion').submit(function() {		
+	/*$('#customerQuestion').submit(function() {		
 		var post_data = $('#customerQuestion').serialize();
 		document.getElementById('tipThank').style.display = "";
 		$.post('functions.php', post_data, function(data) {
@@ -135,7 +147,7 @@ print "</div>";
 			alert("Thank you for sending us the question. We will answer as soon as possible.");
 			//$('#tipThank').show();
 		});
-	});
+	});*/
 </script>
 <!-- footer -->
 <?php

@@ -2,6 +2,8 @@
 	/*
 		Author: Quynh Nguyen (queeniehnnguyen)
 		Date created: Nov - 18 - 2018.
+		Course Module: CPRG-210-OSD - Web Application Development - PHP and MySQL
+		Assignment#: CPRG210 Exercises Day 13
 		Summary: implement object Agent.
 	*/
 	
@@ -43,6 +45,18 @@
 			$this -> AgencyId = $agent -> AgencyId;
 			$this -> AgencyName = $agent -> AgencyName;
 		}
+		
+		function setAgentFromArray($agent) {
+			$this -> AgentId = $agent['AgentId'];
+			$this -> AgtFirstName = $agent['AgtFirstName'];
+			$this -> AgtMiddleInitial = $agent['AgtMiddleInitial'];
+			$this -> AgtLastName = $agent['AgtLastName'];
+			$this -> AgtBusPhone = $agent['AgtBusPhone'];
+			$this -> AgtEmail = $agent['AgtEmail'];
+			$this -> AgtPosition = $agent['AgtPosition'];
+			$this -> AgencyId = $agent['AgencyId'];
+			$this -> AgencyName = $agent['AgencyName'];
+		}
 
 		function getDummyData() {
 			//$this -> AgentId; -- generate automatically in database
@@ -63,6 +77,10 @@
 		
 		function getAgenId() {
 			return $this -> AgentId;
+		}
+		
+		function toString() {
+			return $this -> AgtFirstName . ", " . $this -> AgtLastName;
 		}
 	}
 ?>
