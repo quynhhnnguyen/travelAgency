@@ -76,7 +76,7 @@
 		
 		$aValues = getDataForm($aValues);
 		$values -> setAgentFromArray($aValues);
-		//print "<br/>" . $aValues['AgtFirstName'];
+
 		if(isset($aValues['AgtFirstName'])) {
 			if(addNewAgentToDB($values)) {
 				$message = "New Agent was added successfully";
@@ -87,7 +87,6 @@
 		} else {
 			$message = "Invalid Information.Please check the information again.";
 		}
-		//print $message;
 		redirectPage("agententry.php", $message);
 	}
 	
@@ -105,34 +104,24 @@
 	*/
 	function getDataForm($aarray) {
 		
-		//print "<br/> original  array: ";
-				//print_r($aarray);
-				
-		//if(!$aarray) {
-			if(!is_array($aarray)) { //try to  transform to array
+		if(!is_array($aarray)) { //try to  transform to array
 				$aarray = get_object_vars($aarray);
-				//print "<br/> convert object to array: ";
-				//print_r($aarray);
-			} else {
-				print "<br/> don't need to convert object to array: ";
-				//print_r($aarray);
-			}
+		} else {
+			print "<br/> don't need to convert object to array: ";
+		}
 			
-			/*print "<br/> Keys: ";
-			print_r(array_keys($aarray));*/
-			$value = "";
-			foreach (array_keys($aarray) as $key) {
-				//if ($_GET)
-				if ($_SERVER["REQUEST_METHOD"] == "GET") {
-					$value = $_GET[$key];
-				} else if (isset($_POST)) {
-					$value = $_POST[$key];
-				} else {
-					$value = $_REQUEST[$key];
-				}
-				$aarray[$key] = $value;
+		$value = "";
+		foreach (array_keys($aarray) as $key) {
+			//if ($_GET)
+			if ($_SERVER["REQUEST_METHOD"] == "GET") {
+				$value = $_GET[$key];
+			} else if (isset($_POST)) {
+				$value = $_POST[$key];
+			} else {
+				$value = $_REQUEST[$key];
 			}
-		//}
+			$aarray[$key] = $value;
+		}
 
 		/**should try catch unexpected exception may happen */
 		return $aarray;
@@ -177,7 +166,7 @@
 					$_SESSION['logged-in'] = true;
 					/*$returnPage = $_SESSION['returnpage'];
 					unset($_SESSION['returnPage']);*/
-					header("Location: agententry.php");
+					redirectPage("agententry.php", "");
 					break;
 				case $roles['End-User']: //redirect to Home Page & active the profile link
 					break;
@@ -186,8 +175,6 @@
 			
 		} else {
 			redirectPage("login.php", "Password is incorrect.");
-			/*$_SESSION["message"] .=  "Password is incorrect." . $accountDB -> password . ", " . $accountDB -> roleId . $inputValues['password'];
-			header("Location: login.php");*/
 		}
 		
 		//$_SESSION["message"] = "ERROR!!!!." . $accountDB["userName"] . $accountDB -> password;

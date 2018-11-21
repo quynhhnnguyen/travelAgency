@@ -1,194 +1,234 @@
 <?php
 	/*
-		Author: Quynh Nguyen (queeniehnnguyen)
-		Date created: Nov - 6 - 2018.
-		Course Module: CPRG-210-OSD - Web Application Development - HTML/ CSS/ JavaScript
-		Assignment#: CPRG210 Exercises Day 1 - Day 2 - Day 4 - Day 6
-		Summary: implement registration page in html & javascript.
+		Author: Peter
+		Date created: Nov - 14 - 2018.
+		Course Module: CPRG-210-OSD - Web Application Development - PHP and MySQL
+		Assignment#: CPRG210 Exercises Day 8
+		Summary: construct the Registration Page 
+				to allow user register .
 	*/
 	include "header.php";
+	
+	//set value to activeTab by session variable
+	$_SESSION["activeTab"] = "registrationsTab";
+	
+	//navigations
+	include "menu.php";
+	
 ?>
 
-		
-		<script>
-		
-			function preSubmit() {
-				if (validateInfo()) {
-				resetMissingInfoNotification();
-					return confirm('Are you sure that you want to submit all information?');
-				}
-				
-				return false;				
-			}
-			
-			function validateInfo() {
-				
-				resetMissingInfoNotification();
 
-				if (isNull("fname")) {
-					elementDisplay("fnameMissing");
-					return false;
-				}
-				
-				if (isNull("lname")) {
-					elementDisplay("lnameMissing");
-					return false;
-				}
-				
-				if (isNull("email")) {
-					//		harv.peters@a-1.com.sait.ca		!#$%&'*+\/=?^_`{-
-					var reg = /^[a-zA-Z][a-zA-Z0-9.!#$%&'*+\/=?^_`{-]+@([a-zA-Z][a-zA-Z0-9-]+\.)+[a-zA-Z]{2,6}$/;
-					
-					if (!reg.test(document.getElementById("email").value))
-					{
-						elementDisplay("invalidEmail");
-						return false;
-					}
-				}
-				
-				if (isNull("postalcode")) {
-					var postalcodeEle = document.getElementById("postalcode");
-					postalcodeEle.value = postalcodeEle.value.toUpperCase();
-					var reg2 = /(^[A-Z]\d[A-Z] ?\d[A-Z]\d$)|(^\d{5}( ?\d{4})?$)/i;
-					if (!reg2.test(postalcodeEle.value))
-					{
-						elementDisplay("invalidPostalCode");
-						return false;
-					}
-				}
-	
-				return true;
-			}
-			
-			function resetMissingInfoNotification() {
-				elementHidden("fnameMissing");
-				elementHidden("lnameMissing");
-				elementHidden("invalidEmail");
-				elementHidden("invalidPostalCode");
-			}
-			
-		</script>
-	
-	<div class="col-sm-12">
-		<div class="col-sm-6 shadow-lg p-4 mb-4 bg-black container-fluid rounded" style="background-color:lightblue">
-			<form method="post" action="bouncer.php" id="custInfo">
-				<div>
-					<div>
-						<h2><b>Enter your information:</b></h2>
-						<br/>
-						<p class="tip" id="tipFname">Enter your First Name</p>
-						<p class="tip" id="tipLname">Enter your Last Name</p>
-						<p class="tip" id="tipEmail">Enter your Email Address</p>
-						<p class="tip" id="tipAddress">Enter your Home Address</p>
-						<p class="tip" id="tipHomePhone">Enter your Home Phone <br/> 999-999-9999.</p>
-						<p class="tip" id="tipCellPhone">Enter your Cell Phone <br/> 999-999-9999.</p>
-						<p class="tip" id="tipCity">Enter your City</p>
-						<p class="tip" id="tipPostalCode">Enter your Postal Code</p>
-						<br/>
-						<br/>
-					</div>
-					
-					<div id="table1">				
-						<div class="form-inline">
-							<label class="col-sm-4 control-label labelStyle">First Name:</label>
-							<input type="text" class="form-control" id="fname" name="fname" required="required" 
-									onfocus="tipFname.style.visibility='visible'"
-									onblur="tipFname.style.visibility='hidden'">
-							<span class="missingInfo" style="display:none" id="fnameMissing">* First Name is missing</span>
-						</div>
-						<div class="form-inline">
-							<label class="col-sm-4 control-label labelStyle">Last Name:</label>
-							<input type="text" class="form-control" id="lname" name="lname" required="required"
-									onfocus="tipLname.style.visibility='visible'"
-									onblur="tipLname.style.visibility='hidden'">
-							<span class="missingInfo" style="display:none" id="lnameMissing">* Last Name is missing</span>
-						</div>
-						<div class="form-inline">
-							<label class="col-sm-4 control-label labelStyle">Age:</label>
-							<input type="number" class="form-control" id="age" name="age">
-						</div>
-						<div class="form-inline">
-							<label class="col-sm-4 control-label labelStyle">Date Of Birth:</label>
-							<input type="date" class="form-control" id="birthday" name="birthday">
-						</div> 
-						<div class="form-inline">
-							<label class="col-sm-4 control-label labelStyle">Email address:</label>
-							<input type="email" class="form-control" id="email" name="email" required="required"
-									onfocus="tipEmail.style.visibility='visible'"
-									onblur="tipEmail.style.visibility='hidden'">
-							<span class="missingInfo" style="display:none" id="invalidEmail">* Invalid Email Address.</span>
-						</div>
-						<div class="form-inline">
-							<label class="col-sm-4 control-label labelStyle">Address:</label>
-							<textarea class="form-control" id="address" name="address" required="required"
-									rows="3" placeholder="Enter your address"
-									onfocus="tipAddress.style.visibility='visible'"
-									onblur="tipAddress.style.visibility='hidden'"></textarea>
-						</div>
-						<div class="form-inline">
-							<label class="col-sm-4 control-label labelStyle">Home Phone:</label>
-							<input type="phone" class="form-control" id="homephone" name="homephone"
-									onfocus="tipHomePhone.style.visibility='visible'"
-									onblur="tipHomePhone.style.visibility='hidden'">
-						</div>
-						<div class="form-inline">
-							<label class="col-sm-4 control-label labelStyle">Cell Phone:</label>
-							<input type="phone" class="form-control" id="cellphone" name="cellphone"
-									onfocus="tipCellPhone.style.visibility='visible'"
-									onblur="tipCellPhone.style.visibility='hidden'">
-						</div>	
-						<div class="form-inline">
-							<label class="col-sm-4 control-label labelStyle">City:</label>
-							<input type="text" class="form-control" id="city" name="city"
-									onfocus="tipCity.style.visibility='visible'"
-									onblur="tipCity.style.visibility='hidden'">
-						</div>	
-						<div class="form-inline">
-							<label class="col-sm-4 control-label labelStyle">Province:</label>
-							<select id="provinces" name="provinces" multiple="multiple" class="form-control">
-									<option value="">Select a province</option>
-									<option value="AB">Alberta</option>
-									<option value="SK">Saskatchewan</option>
-									<option value="BC">British Columbia</option>
-									<option value="MB">Manitoba</option>
-									<option value="WP">Winnipeg</option>
-							</select>
-						</div>
-						<div class="form-inline">
-							<label class="col-sm-4 control-label labelStyle">Postal Code:</label>
-							<input type="phone" class="form-control" id="postalcode" name="postalcode"
-									onfocus="tipPostalCode.style.visibility='visible'"
-									onblur="tipPostalCode.style.visibility='hidden'">
-							<span class="missingInfo" style="display:none" id="invalidPostalCode">* Invalid Postal Code. The format should be X9X 9X9.</span>
-						</div>		
-				
-						<div class="form-inline">
-							<label class="col-sm-4 control-label labelStyle">Travel Destinations:</label>
-							<select id="destinations" name="destinations" multiple="multiple" class="form-control">
-									<option value="">Select a destination</option>
-									<option value="bf">Banff</option>
-									<option value="mx">Mexico</option>
-									<option value="to">Toronto</option>
-									<option value="wp">Winnipeg</option>
-									<option value="hw">Hawaii</option>
-									<option value="jv">Java</option>
-							</select>
-						</div>
-						<div class="form-inline">
-							<input type="submit" class="btn btn-primary" value="Register" onclick="return preSubmit();"/>
-							<input type="reset" class="btn btn-warning" value="Reset" 
-									onclick="return confirm('Do you really want to reset all information?')? resetMissingInfoNotification():false;"/>
-						</div>			
-					</div>
-				</div>
 
-			</form>
-		</div>
-		<br/>
-	</div>
-	<br/>
-	<hr/>
-	<br/>
-<?php
+  <script>
+
+  function chkother(fld,length,index) //This function allows input of countries other than Canada, Mexico and United States
+  {                                   //Also it allows the input of Provinces or States outside of Canada.
+    if ((index+1)==length)
+      {
+        other=prompt("Please indicate 'other' value:");
+        fld.options[index].value=other;
+        fld.options[index].text=other;
+      }
+    }
+
+
+    function validate(myform) //This function ensures a valid Canadian postal code format.
+    {
+      document.getElementById("message").innerHTML = "";
+      var message = "";
+
+      myform.pcode.value = myform.pcode.value.toUpperCase();
+      var reg = /^[a-z]\d[a-z] ?\d[a-z]\d$/i;
+      if (!reg.test(myform.pcode.value))
+      {
+        message += "Invalid Postal Code format: should be X9X 9X9<br />";
+      }
+
+       if (message)
+      {
+        document.getElementById("message").innerHTML = message;
+        return false;
+      }
+    }
+  </script>
+
+<div class="container-fluid registerBackground">
+    <h2 class="registerme">PLEASE REGISTER BELOW</h2>
+   <div class="registerContainer">
+   <form action="bouncer.php" method="post">
+    <div class="row">
+      <div class="col-50">
+        <label for="fname">First Name</label>
+      </div>
+      <div class="col-50">
+        <input type="text" id="fname" name="firstname" required="required" placeholder="First name..">
+      </div>
+    </div>
+    <div class"row">
+      <div class="col-50">
+        <label for="mname">Middle Name</label>
+      </div>
+      <div class="col-50">
+        <input type="text" id="mname" name="middlename" placeholder="Middle name..">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-50">
+        <label for="lname">Last Name</label>
+      </div>
+      <div class="col-50">
+        <input type="text" id="lname" name="lastname" required="required" placeholder="Last name..">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-50">
+        <label for="userid">User ID</label>
+      </div>
+      <div class="col-50">
+        <input type="text" id="userid" name="userid" required="required" placeholder="User Id..">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-50">
+        <label for="pswd">Password</label>
+      </div>
+      <div class="col-50">
+        <input type="password" id="pswd" name="password" value="" required="required" placeholder="Password..">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-50">
+        <label for="pwrepeat">Password Repeat</label>
+      </div>
+      <div class="col-50">
+        <input type="password" id="pwrepeat" name="pwrepeat" value="" required="required" placeholder="Password repeat..">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-50">
+        <label for="housenumber">House number</label>
+      </div>
+      <div class="col-50">
+        <input type="number" id="housenumber" name="housenumber" required="required" min=
+        "1" max="1000000" placeholder="House number.."><!--House number can not be negative  -->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-50">
+        <label for="street">Street</label>
+      </div>
+      <div class="col-50">
+        <input type="text" id="street" name="street" required="required" placeholder="Street..">
+      </div>
+    </div>
+    <div class"row">
+      <div class="col-50">
+        <label for="city">City</label>
+      </div>
+      <div class="col-50">
+        <input type="text" id="city" name="city" required="required"  placeholder="City..">
+      </div>
+    </div>
+    <div class"row">
+      <div class="col-50">
+        <label for="hphone">Home Phone</label>
+      </div>
+      <div class="col-50">
+        <input type="phone" id="hphone" name="hphone" placeholder="Home Phone..">
+      </div>
+    </div>
+    <div class"row">
+      <div class="col-50">
+        <label for="busphone">Business Phone</label>
+      </div>
+      <div class="col-50">
+        <input type="phone" id="busphone" name="busphone" required="required"  placeholder="Business Phone..">
+      </div>
+    </div>
+    <div class"row">
+      <div class="col-50">
+        <label for="emailD">Email Address</label>
+      </div>
+      <div class="col-50">
+        <input type="email" id="emailD" name="emailD" required="required"  placeholder="Email Address..">
+      </div>
+    </div>
+    <div class"row">
+      <div class="col-50">
+        <label for="pcode">Postal Code</label>
+      </div>
+      <div class="col-50">
+        <input type="text" id="pcode" name="pcode" required="required"><p id="message" style="font-size:20px; font-weight:bold; color:red;"></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-50">
+        <label for="province">Province</label>
+      </div>
+      <div class="col-50">
+        <select onchange="chkother(this,this.options.length,this.options.selectedIndex)" name="province" id="province" class="provinceSelect">
+        <option value="select province" id="province1" selected>Select Province</option>
+        <option value="Alberta" id="province1">Alberta</option>
+        <option value="Bristish Columbia" id="province1">Bristish Columbia</option>
+        <option value="Manitiba" id="province1">Manitiba</option>
+        <option value="Alberta" id="province1">Alberta</option>
+        <option value="New Foundland & Labrador id="province1"">New Foundland & Labrador</option>
+        <option value="Nova Scotia" id="province1">Nova Scotia</option>
+        <option value="Prince Edward Island" id="province1">Prince Edward Island</option>
+        <option value="Quebec" id="province1">Quebec</option>
+        <option value="Saskatchewan" id="province1">Saskatchewan</option>
+        <option value="Other" id="country1">Other</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-50">
+        <label for="country">Country</label>
+      </div>
+      <div class="col-50">
+        <select onchange="chkother(this,this.options.length,this.options.selectedIndex)" name="country" id="country" class="countrySelect">
+         <option value="select country" id="country1" selected>Select Country</option>
+         <option value="Canada" id="country1">Canada</option>
+         <option value="United States" id="country1">United States</option>
+         <option value="Mexico" id="country1">Mexico</option>
+         <option value="Other" id="country1">Other</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-50">
+        <label for="destination">Travel Destination</label>
+      </div>
+      <div class="col-50">
+        <textarea id="destination" name="destination" placeholder="Write favorite destination.." style="height:150px"></textarea>
+      </div>
+    </div>
+    <div class="row">
+	  <button type="submit" class="pure-button pure-button-primary" onclick="return validate(this.form);">Submit</button>
+	  <button type="reset" class="pure-button pure-button-primary" onclick="return confirm('Do you really want to reset?');">Reset</button>
+    </div>
+   </div>
+</div>
+  <script type="text/javascript">
+    var pswd = document.getElementById("pswd");
+    var pwrepeat = document.getElementById("pwrepeat");
+
+    function passwordValidate() // This function to ensure password and repeat password matches
+      {
+        if(pswd.value != pwrepeat.value)
+          {
+            pwrepeat.setCustomValidity("Password does not match");
+          }
+          else
+          {
+            pwrepeat.setCustomValidity("");
+          }
+      }
+      pswd.onchange = passwordValidate;
+      pwrepeat.onkeyup = passwordValidate;
+  </script>
+  </form>
+  </div>
+<?php 
 	include "footer.php";
 ?>

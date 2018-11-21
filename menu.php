@@ -47,9 +47,9 @@
 							//registrations
 							if ($_SESSION["activeTab"]=="registrationsTab") {
 								$_SESSION["activeTab"] = "registrationsTab";
-								print "<li class=\"active\"><a href=\"registrations.php\">Registrations</a></li>";
+								print "<li class=\"active\"><a href=\"register.php\">Registrations</a></li>";
 							} else {
-								print "<li><a href=\"registrations.php\">Registrations</a></li>";
+								print "<li><a href=\"register.php\">Registrations</a></li>";
 							}
 							
 							//contact
