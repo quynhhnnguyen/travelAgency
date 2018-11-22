@@ -7,6 +7,10 @@
 		Summary: construct the Registration Page 
 				to allow user register .
 	*/
+	
+	session_cache_expire(30);
+	session_start();
+	
 	include "header.php";
 	
 	//set value to activeTab by session variable
@@ -17,9 +21,7 @@
 	
 ?>
 
-
-
-  <script>
+  <script type="text/javascript">
 
   function chkother(fld,length,index) //This function allows input of countries other than Canada, Mexico and United States
   {                                   //Also it allows the input of Provinces or States outside of Canada.
@@ -56,7 +58,7 @@
     <h2 class="registerme">PLEASE REGISTER BELOW</h2>
    <div class="registerContainer">
    <form action="bouncer.php" method="post">
-    <div class="row">
+    <div class="row justify-content-end">
       <div class="col-50">
         <label for="fname">First Name</label>
       </div>
@@ -64,7 +66,7 @@
         <input type="text" id="fname" name="firstname" required="required" placeholder="First name..">
       </div>
     </div>
-    <div class"row">
+    <div class="row">
       <div class="col-50">
         <label for="mname">Middle Name</label>
       </div>
@@ -121,7 +123,7 @@
         <input type="text" id="street" name="street" required="required" placeholder="Street..">
       </div>
     </div>
-    <div class"row">
+    <div class="row">
       <div class="col-50">
         <label for="city">City</label>
       </div>
@@ -129,7 +131,7 @@
         <input type="text" id="city" name="city" required="required"  placeholder="City..">
       </div>
     </div>
-    <div class"row">
+    <div class="row">
       <div class="col-50">
         <label for="hphone">Home Phone</label>
       </div>
@@ -137,7 +139,7 @@
         <input type="phone" id="hphone" name="hphone" placeholder="Home Phone..">
       </div>
     </div>
-    <div class"row">
+    <div class="row">
       <div class="col-50">
         <label for="busphone">Business Phone</label>
       </div>
@@ -145,7 +147,7 @@
         <input type="phone" id="busphone" name="busphone" required="required"  placeholder="Business Phone..">
       </div>
     </div>
-    <div class"row">
+    <div class="row">
       <div class="col-50">
         <label for="emailD">Email Address</label>
       </div>
@@ -153,7 +155,7 @@
         <input type="email" id="emailD" name="emailD" required="required"  placeholder="Email Address..">
       </div>
     </div>
-    <div class"row">
+    <div class="row">
       <div class="col-50">
         <label for="pcode">Postal Code</label>
       </div>
@@ -172,7 +174,7 @@
         <option value="Bristish Columbia" id="province1">Bristish Columbia</option>
         <option value="Manitiba" id="province1">Manitiba</option>
         <option value="Alberta" id="province1">Alberta</option>
-        <option value="New Foundland & Labrador id="province1"">New Foundland & Labrador</option>
+        <option value="New Foundland & Labrador" id="province1">New Foundland & Labrador</option>
         <option value="Nova Scotia" id="province1">Nova Scotia</option>
         <option value="Prince Edward Island" id="province1">Prince Edward Island</option>
         <option value="Quebec" id="province1">Quebec</option>
@@ -208,7 +210,7 @@
 	  <button type="reset" class="pure-button pure-button-primary" onclick="return confirm('Do you really want to reset?');">Reset</button>
     </div>
    </div>
-</div>
+
   <script type="text/javascript">
     var pswd = document.getElementById("pswd");
     var pwrepeat = document.getElementById("pwrepeat");
@@ -229,6 +231,7 @@
   </script>
   </form>
   </div>
+</div>
 <?php 
 	include "footer.php";
 ?>
