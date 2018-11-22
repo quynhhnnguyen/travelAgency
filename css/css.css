@@ -251,39 +251,41 @@ footer .glyphicon {
 * {box-sizing: border-box;}
 
 /* Maryam Munir - css block - end */
+
 /* Peter - css block - start */
-.registerme
-
+.registerBackground
 {
-
-  border: 1px solid #ADD8E6;
-  background-color: #ADD8E6;
-  width: 51%;
-  padding: 5px;
-  border-radius: 4px;
-  text-align: center;
-  color: #00008B;
+  background-image: url("../img/bee-eaters-.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+  background-size: cover;
 }
 
-.registerContainer
-
+/* Styling for input element types text, email, select, textarea and phone */
+#registerPage input[type=text], input[type=phone], input[type=date], 
+#registerPage input[type=email], select, textarea
 {
-    border-radius: 5px;
-    background-color: #ADD8E6;
-    padding: 20px;
     width: 50%;
-}
-
-label
-
-{
-    padding: 12px 12px 12px 0;
-    display: inline-block;
-    font-size: 20px;
-    font-weight: bold;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    background-color: #98FB98;
     color: #00008B;
+    font-size: 15px;
 }
 
+#registerPage input[type=password], input[type=number]  /* Styling for input element password and number */
+{
+    width: 30%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    background-color: #98FB98;
+    font-size: 15px;
+}
 #province1
 
 {
@@ -297,44 +299,17 @@ label
     font-size: 15px;
 }
 
-.registerBackground
-{
-  background-image: url("bee-eaters-.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 100%;
-  background-size: cover;
-}
+label
 
-/*------------------*/
-input[type=text], input[type=phone], input[type=date], /* Styling for input element types text, email, select, textarea and phone */
-input[type=email], select, textarea
 {
-    width: 50%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: vertical;
-    background-color: #98FB98;
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bold;
     color: #00008B;
-    font-size: 15px;
 }
 
-input[type=password], input[type=number]  /* Styling for input element password and number */
-{
-    width: 30%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: vertical;
-    background-color: #98FB98;
-    font-size: 15px;
-}
-
-
-
-
-button[type=submit]
+#registerPage button[type=submit]
 
 {
     background-color: #4CAF50;
@@ -346,7 +321,7 @@ button[type=submit]
     float: right;
 }
 
-button[type=reset]
+#registerPage button[type=reset]
 
 {
     background-color: #4CAF50;
@@ -358,16 +333,40 @@ button[type=reset]
     float: left;
 }
 
-botton[type=submit]:hover
+#registerPage botton[type=submit]:hover
 
 {
     background-color: #45a049;
 }
 
-button[type=reset]:hover
+#registerPage button[type=reset]:hover
 
 {
     background-color: #45a049;
+}
+
+
+.registerContainer
+
+{
+    border-radius: 5px;
+    background-color: #ADD8E6;
+    padding: 20px;
+    width: 50%;
+	margin-top: 30px;
+}
+
+.registerme
+
+{
+  border: 1px solid #ADD8E6;
+  background-color: #ADD8E6;
+  width: 51%;
+  padding: 5px;
+  border-radius: 4px;
+  text-align: center;
+  color: #00008B;
+  margin: auto;
 }
 /* Peter - css block - end */
 
