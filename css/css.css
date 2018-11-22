@@ -251,6 +251,7 @@ footer .glyphicon {
 * {box-sizing: border-box;}
 
 /* Maryam Munir - css block - end */
+
 /* Peter - css block - start */
 .registerBackground
 {
@@ -261,8 +262,9 @@ footer .glyphicon {
   background-size: cover;
 }
 
-input[type=text], input[type=phone], input[type=date], /* Styling for input element types text, email, select, textarea and phone */
-input[type=email], select, textarea
+/* Styling for input element types text, email, select, textarea and phone */
+#registerPage input[type=text], input[type=phone], input[type=date], 
+#registerPage input[type=email], select, textarea
 {
     width: 50%;
     padding: 12px;
@@ -274,7 +276,7 @@ input[type=email], select, textarea
     font-size: 15px;
 }
 
-input[type=password], input[type=number]  /* Styling for input element password and number */
+#registerPage input[type=password], input[type=number]  /* Styling for input element password and number */
 {
     width: 30%;
     padding: 12px;
@@ -307,7 +309,7 @@ label
     color: #00008B;
 }
 
-button[type=submit]
+#registerPage button[type=submit]
 
 {
     background-color: #4CAF50;
@@ -319,7 +321,7 @@ button[type=submit]
     float: right;
 }
 
-button[type=reset]
+#registerPage button[type=reset]
 
 {
     background-color: #4CAF50;
@@ -331,13 +333,13 @@ button[type=reset]
     float: left;
 }
 
-botton[type=submit]:hover
+#registerPage botton[type=submit]:hover
 
 {
     background-color: #45a049;
 }
 
-button[type=reset]:hover
+#registerPage button[type=reset]:hover
 
 {
     background-color: #45a049;

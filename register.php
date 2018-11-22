@@ -54,7 +54,7 @@
     }
   </script>
 
-<div class="container-fluid registerBackground">
+<div id="registerPage" class="container-fluid registerBackground">
     <h2 class="registerme">PLEASE REGISTER BELOW</h2>
    <div class="registerContainer">
    <form action="bouncer.php" method="post">
