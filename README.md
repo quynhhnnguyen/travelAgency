@@ -1,4 +1,5 @@
 # travelAgency
+This project is as the part of the final assessment at SAIT - for Study Purpose Only.
 Building the Travel Agency Website with PHP, My SQL, CSS (Bootstrap), Javascript ...
 
 Name:: Dream Land Travel Agency
