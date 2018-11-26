@@ -1,7 +1,7 @@
 <?php
 
 	/*
-		Author: Quynh Nguyen (queeniehnnguyen)
+		Author: Quynh Nguyen (Queenie)
 		Date created: Nov - 14 - 2018.
 		Course Module: CPRG-210-OSD - Web Application Development - PHP and MySQL
 		Assignment#: CPRG210 Exercises Day 8
@@ -13,6 +13,9 @@
 		Summary: construct the Travel Packages Page 
 				to provide Travel Package Information.
 	*/
+	
+	session_cache_expire(30);
+	session_start();
 	include "header.php";
 	
 	//set value to activeTab by session variable
@@ -21,6 +24,8 @@
 	
 	//navigations
 	include "menu.php";
+	
+	require_once("variables.php");
 	
 	date_default_timezone_set("America/Edmonton");
 	$hour = date("h");
@@ -36,7 +41,7 @@
 		print "<h1>Good Night!!!</h1>";
 	}
 ?>
-<div id="contentcontainer" class="col-sm-12 table-responsive"> 
+<div id="contentcontainer" class="col-sm-12 table-responsive">
 					<table class="table table-dark table-hover imageTableStyle" id="imageTable">
 						<thead>
 						  <tr>
@@ -46,13 +51,43 @@
 						</thead>
 						<tbody>
 							<!-- waiting for loading -->
-
+							<?php
+							$index = 0;
+							foreach($travelPkgs as $travelPkg) {								
+								print "<tr onclick=\"openWindow('" . $travelPkg['URL'] . "');\">";
+								print "<td> <img class=\"img-circle travelimage\" src=\""  . $images[$index] . "\"/> </td>";
+								print "<td>" . $travelPkg['Description'] . "</td>";
+								print "</tr>";
+								$index += 1;
+							}
+							?>
 						</tbody>
 					</table>
 					
 				</div>
 				
-<div><a href="/mainPage.html">Back to Home Page</a></div>
+
+<script>
+			function openWindow(url) {
+				//debugger;
+				popupWin = window.open(url, "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=30%,left=50%,width=400,height=400");
+
+				if(popupWin!=null) {
+					//wait for pop up window loaded completely
+					//debugger;
+					setTimeout(startTimer,2000);
+				}
+			}
+			
+			function startTimer() {
+				timer = setTimeout(closeWindow, 6000);
+			}
+			
+			function closeWindow() {
+				clearTimeout(timer);
+				popupWin.close();
+			}
+</script>
 <!-- footer -->		
 <?php
 	include "footer.php";

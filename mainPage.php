@@ -15,6 +15,9 @@
 
 		Summary: Home Page.
 	*/
+	session_cache_expire(30);
+	session_start();
+	
 	include "header.php";
 	
 	//set value to activeTab by session variable
@@ -32,15 +35,15 @@ the Images Please consider the dimentions Thanks-->
 <div class="slideshow-container">
 
 <div class="mySlides fade">
-   <img class="slideImg" src="img/France.jpg" style="width:80%;margin-left: 10%">
+   <img class="slideImg" src="/img/France.jpg" style="width:80%;margin-left: 10%">
   </div>
 
 <div class="mySlides fade">
-  <img class="slideImg" src="img/Ibiza.jpg" style="width:80%;margin-left: 10%">
+  <img class="slideImg" src="/img/Ibiza.jpg" style="width:80%;margin-left: 10%">
 </div>
 
 <div class="mySlides fade">
-  <img class="slideImg" src="img/Amsterdam.jpg" style="width:80%;margin-left: 10%">
+  <img class="slideImg" src="/img/Amsterdam.jpg" style="width:80%;margin-left: 10%">
 </div>
 
 </div>

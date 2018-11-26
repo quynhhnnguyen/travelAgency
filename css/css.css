@@ -54,6 +54,15 @@
     padding-top: 50px;
  }
  
+ .travelimage, #travelimg1 img, #travelimg2 img, #travelimg3 img {
+		width: 100px;
+		height: 75px;
+		text-align: center;
+}
+
+#imageTable tr hover {
+	background-color:grey;
+}
  .navbar-brand-override {
 	height: 100px;
  }

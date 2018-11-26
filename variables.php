@@ -1,6 +1,6 @@
 <?php
 	/*
-		Author: Quynh Nguyen (queeniehnnguyen)
+		Author: Quynh Nguyen (Queenie)
 		Date created: Nov - 15 - 2018.
 		Course Module: CPRG-210-OSD - Web Application Development - PHP and MySQL
 		Assignment#: CPRG210 Exercises Day 9
@@ -34,10 +34,14 @@
 	
 	array_push($travelPkgs, $travelPkg1, $travelPkg2, $travelPkg3);
 	
+	$images = ["/study/img/lakelouise.jpg", "/study/img/morainelake.jpg", "/study/img/minnewanka.jpg"];
+	
 	$roles = array("Admin" => "0", "End-User" => "1");
 	
-	$_ADMIN_ROLE = 0;
-	$_ENDUSER_ROLE = 1;
+	$agentPosColors = array("Senior Agent" => "gold", "Intermediate Agent" => "silver", "Junior Agent" => "lightyellow");
+	$agentImgByPos
+	 = array("Senior Agent" => "gold_crown.png", "Intermediate Agent" => "silver_crown.png", 
+							"Junior Agent" => "copper_crown.png");
 	
 	
 ?>

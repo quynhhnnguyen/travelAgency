@@ -1,6 +1,6 @@
 <?php
 	/*
-		Author: Quynh Nguyen (queeniehnnguyen)
+		Author: Quynh Nguyen (Queenie)
 		Date created: Nov - 15 - 2018.
 		Course Module: CPRG-210-OSD - Web Application Development - PHP and MySQL
 		Assignment#: CPRG210 Exercises Day 9
@@ -45,8 +45,8 @@
 							}
 							
 							//registrations
-							if ($_SESSION["activeTab"]=="registrationsTab") {
-								$_SESSION["activeTab"] = "registrationsTab";
+							if ($_SESSION["activeTab"]=="registerTab") {
+								$_SESSION["activeTab"] = "registerTab";
 								print "<li class=\"active\"><a href=\"register.php\">Registrations</a></li>";
 							} else {
 								print "<li><a href=\"register.php\">Registrations</a></li>";

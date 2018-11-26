@@ -14,7 +14,8 @@
 	include "header.php";
 	
 	//set value to activeTab by session variable
-	$_SESSION["activeTab"] = "registrationsTab";
+	$_SESSION["activeTab"] = "registerTab";
+	
 	
 	//navigations
 	include "menu.php";

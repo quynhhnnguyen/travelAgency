@@ -1,6 +1,6 @@
 <?php
 	/*
-		Author: Quynh Nguyen (queeniehnnguyen)
+		Author: Quynh Nguyen (Queenie)
 		Date created: Nov - 16 - 2018.
 		Course Module: CPRG-210-OSD - Web Application Development - PHP and MySQL
 		Assignment#: CPRG210 Exercises Day 10 - 11

@@ -1,6 +1,6 @@
 <?php
 	/*
-		Author: Quynh Nguyen (queeniehnnguyen)
+		Author: Quynh Nguyen (Queenie)
 		Date created: Nov - 14 - 2018.
 		Course Module: CPRG-210-OSD - Web Application Development - PHP and MySQL
 		Assignment#: CPRG210 Exercises Day 8
@@ -13,6 +13,9 @@
 				to provide information about Agencies and Agents.
 	*/
 	
+	session_cache_expire(30);
+	session_start();
+	
 	// header
 	include "header.php";
 	
@@ -21,6 +24,7 @@
 	
 	//navigations
 	include "menu.php";
+	require_once("variables.php");
 ?>	
 
 <div id="halfTopBody">
@@ -109,18 +113,22 @@
 print "</div>";
 
 	//generate Agents information
+	global $agentPosColors;
+	global $agentImgByPos;
+	
 	print "<div id=\"agentsdiv\" class=\"col-sm-12 contentPaddingDiv\">";
 	print "<div align='left'>";
 	print "    <h1><b>Our Agents</b></h1>";
 	print "</div>";
 	print "<div class='agentsDiv'>";
 	foreach ($agents as $agent) {
-		print "<div class=\"col-sm-4 well well-lg agentWell\">";
+		$pos = $agent -> AgtPosition;
+		print "<div class=\"col-sm-4 well well-lg agentWell\" style=\"background-color:" . $agentPosColors[$pos] . "\">";
 		print "			<div id=\"agentimg\">";
-		print "				<img class=\"agentImg\" src=\"/study/img/tracyphan.jpg\"/>";
+		print "				<img class=\"agentImg\" src=\"/img/" . $agentImgByPos[$pos] . "\"/>";
 		print "			</div>";
 		print "			<div id=\"agentinfo\">";
-		print "				<b>" . $agent -> AgtPosition. "</b><br/> " . $agent -> AgtFirstName . " " . $agent -> AgtMiddleInitial . " " . $agent -> AgtLastName . "<br/>";
+		print "				<b>" . $pos . "</b><br/> " . $agent -> AgtFirstName . " " . $agent -> AgtMiddleInitial . " " . $agent -> AgtLastName . "<br/>";
 		print "				<span><i class=\"glyphicon glyphicon-phone\"></i></span>";
 		print "				" . $agent -> AgtBusPhone . "<br/>";	
 		print "				<a href=\"mailto:" . $agent -> AgtEmail . "\">";
