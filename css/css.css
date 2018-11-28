@@ -308,6 +308,18 @@ footer .glyphicon {
     font-size: 15px;
 }
 
+#userid, #lastname, #firstname, #UserPassword, #AgentId, #CustProv, #CustCountry {
+	width: 30%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    background-color: #98FB98;
+    color: #00008B;
+    font-size: 15px
+	margin-left: 100px;
+}
+
 label
 
 {
@@ -327,7 +339,7 @@ label
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    float: right;
+    //float: right;
 }
 
 #registerPage button[type=reset]
@@ -353,7 +365,6 @@ label
 {
     background-color: #45a049;
 }
-
 
 .registerContainer
 

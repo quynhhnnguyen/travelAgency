@@ -44,7 +44,8 @@
     }
 	
 </script>
-	  
+
+<div id="registerPage" class="registerContainer"> 
 	<form method="post" action="register1-1.php">
 		<center>
 		<?php
@@ -152,7 +153,7 @@
 		<button type="submit" class="btn btn-default" name="submit" id="submit1" value="Log In">Register</button>
 		
 	</form>
-	
+</div>	
 <?php 
 	include "footer.php";
 ?>
