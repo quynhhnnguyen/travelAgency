@@ -14,12 +14,15 @@
 	require_once('sqlfunctions.php');
 	require_once('modal/Packages.php');
 	
-	$nextPage = isset($_SESSION['nextPage']) ? $_SESSION['nextPage'] : null;
+	//$nextPage = isset($_POST['nextPage']) ? $_POST['nextPage'] : null;
 
+	//print $_POST['action']; nextPage
 	$action = isset($_POST['action'])?$_POST['action']:
 			(isset($_POST['action1'])?$_POST['action1']:
-			(isset($_POST['actionTab'])?$_POST['actionTab']:$_SESSION['action']));
+			(isset($_POST['actionTab'])?$_POST['actionTab']:
+			(isset($_POST['nextPage'])?$_POST['nextPage']:$_SESSION['action'])));
 	//print_r($_POST);
+	//print "aaa" . $action;
 
 	switch ($action) {
 		case "sendQuestion":
@@ -47,6 +50,10 @@
 			break;
 		case "tabClicked":
 			redirectPage($_POST["tabURL"], "");
+			break;
+		case "booking":
+			$_SESSION['nextPage'] = "booking.php";
+			redirectPage("login.php", "");
 			break;
 	}	
 	
@@ -185,11 +192,11 @@
 			switch($accountDB -> roleId) {
 				case $roles['Admin']: //redirect to Agent Entry Page (Home Page & active Agent Entry link)
 					$_SESSION['logged-in'] = true;
-					//if(!$nextPage) {
-						//redirectPage($nextPage, "");
-					//} else {
+					if(isset($_SESSION['nextPage'])) {
+						redirectPage($_SESSION['nextPage'], "");
+					} else {
 						redirectPage("agententry.php", "");
-					//}
+					}
 					break;
 				case $roles['End-User']: //redirect to Home Page & active the profile link
 					break;
