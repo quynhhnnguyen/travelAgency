@@ -164,13 +164,12 @@ input[type=email], select, textarea
 
 #userid, #lastname, #firstname, #UserPassword, #AgentId, #CustProv, #CustCountry {
 	width: 30%;
-    padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: vertical;
     background-color: #98FB98;
     color: #00008B;
-    font-size: 15px
+    font-size: 15px;
 	margin-left: 100px;
 }
 
