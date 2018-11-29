@@ -1,9 +1,9 @@
 <?php
 	/*
-		Author: Quynh Nguyen (Queenie)
+		Author: Quynh Nguyen (queeniehnnguyen)
 		Date created: Nov - 19 - 2018.
-		Course Module: CPRG-210-OSD - Web Application Development - PHP and MySQL
-		Assignment#: CPRG210 Exercises Day 10
+		Course Module: 
+		Assignment#: 
 		Summary: implement common functions.
 	*/
 	session_cache_expire(30);
@@ -12,33 +12,20 @@
 	require_once('variables.php');
 	require_once('modal/Agent.php');
 	require_once('sqlfunctions.php');
+	require_once('modal/Packages.php');
 
-	$action = isset($_POST['action'])?$_POST['action']:
-			(isset($_POST['action1'])?$_POST['action1']:$_SESSION['action']);
+	$action = isset($_POST['action'])?$_POST['action']:"";
 	//print_r($_POST);
-
 	switch ($action) {
 		case "sendQuestion":
-			redirectPage("contact.php", "Thank you for sending us the question. We will answer as soon as possible.");
 			sendCustomerQuestion();
-			//redirectPage("contact.php", "Thank you for sending us the question. We will answer as soon as possible.");
+			redirectPage("contact.php", "Thank you for sending us the question. We will answer as soon as possible.");
 			break;
 		case "addNewAgent":
 			addNewAgent();
 			break;
 		case "authentication":
 			authentication();
-			break;
-		case "logout":
-			$_SESSION["logged-in"] = false;
-			print "log out";
-			redirectPage("mainpage.php", "");
-			break;
-		case "login":
-			redirectPage("login.php", "");
-			break;
-		case "tabClicked":
-			redirectPage($_POST["tabURL"], "");
 			break;
 	}	
 	
@@ -153,6 +140,8 @@
 		print_r($inputValues);
 		// validate login information
 		if(!isset($inputValues['userName'])) {
+			/*$_SESSION["message"] = "User Name and Password are required.";
+			header("Location: login.php");*/
 			redirectPage("login.php", "User Name and Password are required.");
 		}
 		
@@ -164,17 +153,20 @@
 
 		print $accountDB -> password;
 		if($accountDB==null) {
+			/*$_SESSION["message"] .= "Your account does not exist." . $inputValues['userName'];
+			header("Location: login.php");*/
 			redirectPage("login.php", "Your account does not exist.");
 		}
 		
 		//encryption
 		/* md5(String password);*/
-		/*password_verify($inputValues['password'] , $accountDB -> password)*/
-		if ($inputValues['password'] == $accountDB -> password) {
+		if (/*password_verify($inputValues['password'] , $accountDB -> password)*/$inputValues['password'] == $accountDB -> password) {
 			$_SESSION["message"] .=  $accountDB -> roleId;
 			switch($accountDB -> roleId) {
 				case $roles['Admin']: //redirect to Agent Entry Page (Home Page & active Agent Entry link)
 					$_SESSION['logged-in'] = true;
+					/*$returnPage = $_SESSION['returnpage'];
+					unset($_SESSION['returnPage']);*/
 					redirectPage("agententry.php", "");
 					break;
 				case $roles['End-User']: //redirect to Home Page & active the profile link
@@ -186,9 +178,13 @@
 			redirectPage("login.php", "Password is incorrect.");
 		}
 		
+		//$_SESSION["message"] = "ERROR!!!!." . $accountDB["userName"] . $accountDB -> password;
+		//header("Location: login.php");
 		//decryption
 		/*$password = 'examplepassword';
 		$crypted = password_hash($password, PASSWORD_DEFAULT);*/
+		
+		//authentication false, stay at this page & notify to user.
 
 	}
 ?>
