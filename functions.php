@@ -17,7 +17,8 @@
 	$nextPage = isset($_SESSION['nextPage']) ? $_SESSION['nextPage'] : null;
 
 	$action = isset($_POST['action'])?$_POST['action']:
-			(isset($_POST['action1'])?$_POST['action1']:$_SESSION['action']);
+			(isset($_POST['action1'])?$_POST['action1']:
+			(isset($_POST['actionTab'])?$_POST['actionTab']:$_SESSION['action']));
 	//print_r($_POST);
 
 	switch ($action) {
