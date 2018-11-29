@@ -13,7 +13,7 @@
 		<a href="#"><img class="socialIcon" src="/img/facebook.png"/></a>
 		<a href="#"><img class="socialIcon" src="/img/instagram.png"/></a>
 		<a href="#"><img class="socialIcon" src="/img/snapchat.png"/></a>
-		<a href="#"><img class="authenticationIcon" src="/img/sign_up.png"/></a>
+		<a href="register.php"><img class="authenticationIcon" src="/img/sign_up.png"/></a>
 		<form id="loginout" action="functions.php" style="display:inline" method="post">
 		
 			
