@@ -1,10 +1,20 @@
 <?php
 	/*
-		Author: Quynh Nguyen (queeniehnnguyen)
+		Author: Quynh Nguyen (Queenie)
 		Date created: Nov - 14 - 2018.
+		Course Module: CPRG-210-OSD - Web Application Development - PHP and MySQL
+		Assignment#: CPRG210 Exercises Day 8
+		
+		Modified: Nov - 15 - 2018.
+		Assignment#: CPRG210 Exercises Day 9 
+				(Separated header, footer, menu to different php files & include them back via include function)
+		
 		Summary: construct the Contact Page 
 				to provide information about Agencies and Agents.
 	*/
+	
+	session_cache_expire(30);
+	session_start();
 	
 	// header
 	include "header.php";
@@ -14,6 +24,7 @@
 	
 	//navigations
 	include "menu.php";
+	require_once("variables.php");
 ?>	
 
 <div id="halfTopBody">
@@ -22,9 +33,13 @@
 <div class="container-fluid text-center">
 	<!-- input question form -->
 	<div class="contentPaddingDiv col-sm-7 slideanim slide">
-		<form method="post" id="customerQuestion">
+		<form method="post" id="customerQuestion" action="functions.php">
 				<div>
-				<p id="tipThank" style="display:none">Thank you for sending us the question. We will answer as soon as possible.</p>
+				<?php
+					if(isset($_SESSION['message'])) {
+						print "<h3 style='color:red, background-color:yellow'>" . $_SESSION['message'] . "</h3>";
+					}
+				?>
 
 					<div class="halfTopBodyDiv">
 						<br/>
@@ -35,7 +50,7 @@
 						<br/>
 						<br/>
 					</div>
-					<input type="hidden" id="action" name="action" value="sendquestion"></input>
+					<input type="hidden" id="action" name="action" value="sendQuestion"></input>
 					<div id="table1">				
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -98,18 +113,22 @@
 print "</div>";
 
 	//generate Agents information
+	global $agentPosColors;
+	global $agentImgByPos;
+	
 	print "<div id=\"agentsdiv\" class=\"col-sm-12 contentPaddingDiv\">";
 	print "<div align='left'>";
 	print "    <h1><b>Our Agents</b></h1>";
 	print "</div>";
 	print "<div class='agentsDiv'>";
 	foreach ($agents as $agent) {
-		print "<div class=\"col-sm-4 well well-lg agentWell\">";
+		$pos = $agent -> AgtPosition;
+		print "<div class=\"col-sm-4 well well-lg agentWell\" style=\"background-color:" . $agentPosColors[$pos] . "\">";
 		print "			<div id=\"agentimg\">";
-		print "				<img class=\"agentImg\" src=\"/study/img/tracyphan.jpg\"/>";
+		print "				<img class=\"agentImg\" src=\"/img/" . $agentImgByPos[$pos] . "\"/>";
 		print "			</div>";
 		print "			<div id=\"agentinfo\">";
-		print "				<b>" . $agent -> AgtPosition. "</b><br/> " . $agent -> AgtFirstName . " " . $agent -> AgtMiddleInitial . " " . $agent -> AgtLastName . "<br/>";
+		print "				<b>" . $pos . "</b><br/> " . $agent -> AgtFirstName . " " . $agent -> AgtMiddleInitial . " " . $agent -> AgtLastName . "<br/>";
 		print "				<span><i class=\"glyphicon glyphicon-phone\"></i></span>";
 		print "				" . $agent -> AgtBusPhone . "<br/>";	
 		print "				<a href=\"mailto:" . $agent -> AgtEmail . "\">";
@@ -125,9 +144,10 @@ print "</div>";
 	//testInsertFunction();
 ?>
 </div>
+</div>
 <script>
 	//sending email without redirecting page
-	$('#customerQuestion').submit(function() {		
+	/*$('#customerQuestion').submit(function() {		
 		var post_data = $('#customerQuestion').serialize();
 		document.getElementById('tipThank').style.display = "";
 		$.post('functions.php', post_data, function(data) {
@@ -135,7 +155,7 @@ print "</div>";
 			alert("Thank you for sending us the question. We will answer as soon as possible.");
 			//$('#tipThank').show();
 		});
-	});
+	});*/
 </script>
 <!-- footer -->
 <?php

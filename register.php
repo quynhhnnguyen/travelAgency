@@ -1,155 +1,37 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head> <!-- The register page was written by Peter Oganwu -->
-  <meta charset="utf-8">
-  <title>Registration Page</title>
-  <style media="screen">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" media="screen" href="../css/reset.css" /> <!-- reset default css settings-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> <!-- Latest compiled and minified bootstrap CSS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> <!-- Latest compiled and minified bootstrap CSS for fomrs -->
-	
-* {
-  box-sizing: border-box; //reset CSS styling to default values
-}
+<?php
+	/*
+		Author: Peter
+		Date created: Nov - 14 - 2018.
+		Course Module: CPRG-210-OSD - Web Application Development - PHP and MySQL
+		Assignment#: CPRG210 Exercises Day 8
+		Summary: construct the Registration Page
+				to allow user register .
+	*/
 
-body
-{
-  background-image: url("bee-eaters-.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 100%;
-  background-size: cover;
-}
+	session_cache_expire(30);
+	session_start();
 
-input[type=text], input[type=phone], input[type=date], /* Styling for input element types text, email, select, textarea and phone */
-input[type=email], select, textarea
-{
-    width: 50%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: vertical;
-    background-color: #98FB98;
-    color: #00008B;
-    font-size: 15px;
-}
+	include "header.php";
 
-input[type=password], input[type=number]  /* Styling for input element password and number */
-{
-    width: 30%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: vertical;
-    background-color: #98FB98;
-    font-size: 15px;
-}
-#province1
-
-{
-    width: 50%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: vertical;
-    margin: 20px;
-    background-color: #98FB98;
-    font-size: 15px;
-}
-
-label
-
-{
-    padding: 12px 12px 12px 0;
-    display: inline-block;
-    font-size: 20px;
-    font-weight: bold;
-    color: #00008B;
-}
-
-button[type=submit]
-
-{
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    float: right;
-}
-
-button[type=reset]
-
-{
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    float: left;
-}
-
-botton[type=submit]:hover
-
-{
-    background-color: #45a049;
-}
-
-button[type=reset]:hover
-
-{
-    background-color: #45a049;
-}
+	//set value to activeTab by session variable
+	$_SESSION["activeTab"] = "registerTab";
 
 
-.container
+	//navigations
+	include "menu.php";
 
-{
-    border-radius: 5px;
-    background-color: #ADD8E6;
-    padding: 20px;
-    width: 50%;
-}
+?>
 
-.registerme
+<script type="text/javascript">
 
-{
-
-  border: 1px solid #ADD8E6;
-  background-color: #ADD8E6;
-  width: 51%;
-  padding: 5px;
-  border-radius: 4px;
-  text-align: center;
-  color: #00008B;
-}
-  </style>
-  <script type="text/javascript">
-
-  function chkother(fld,length,index) //This function allows input of countries other than Canada, Mexico and United States
-  {                                   //Also it allows the input of Provinces or States outside of Canada.
-    if ((index+1)==length)
+      function validate(myform) //This function ensures a valid Canadian postal code format.
       {
-        other=prompt("Please indicate 'other' value:");
-        fld.options[index].value=other;
-        fld.options[index].text=other;
-      }
-    }
-
-
-    function validate(myform) //This function ensures a valid Canadian postal code format.
-    {
       document.getElementById("message").innerHTML = "";
       var message = "";
 
-      myform.pcode.value = myform.pcode.value.toUpperCase();
+      myform.CustPostal.value = myform.CustPostal.value.toUpperCase();
       var reg = /^[a-z]\d[a-z] ?\d[a-z]\d$/i;
-      if (!reg.test(myform.pcode.value))
+      if (!reg.test(myform.CustPostal.value))
       {
         message += "Invalid Postal Code format: should be X9X 9X9<br />";
       }
@@ -160,186 +42,118 @@ button[type=reset]:hover
         return false;
       }
     }
-  </script>
 
-  </head>
-  <body>
-    <h2 class="registerme">PLEASE REGISTER BELOW</h2>
-   <div class="container">
-   <form action="bouncer.php" method="post">
-    <div class="row">
-      <div class="col-50">
-        <label for="fname">First Name</label>
-      </div>
-      <div class="col-50">
-        <input type="text" id="fname" name="firstname" required="required" placeholder="First name..">
-      </div>
-    </div>
-    <div class"row">
-      <div class="col-50">
-        <label for="mname">Middle Name</label>
-      </div>
-      <div class="col-50">
-        <input type="text" id="mname" name="middlename" placeholder="Middle name..">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-50">
-        <label for="lname">Last Name</label>
-      </div>
-      <div class="col-50">
-        <input type="text" id="lname" name="lastname" required="required" placeholder="Last name..">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-50">
-        <label for="userid">User ID</label>
-      </div>
-      <div class="col-50">
-        <input type="text" id="userid" name="userid" required="required" placeholder="User Id..">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-50">
-        <label for="pswd">Password</label>
-      </div>
-      <div class="col-50">
-        <input type="password" id="pswd" name="password" value="" required="required" placeholder="Password..">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-50">
-        <label for="pwrepeat">Password Repeat</label>
-      </div>
-      <div class="col-50">
-        <input type="password" id="pwrepeat" name="pwrepeat" value="" required="required" placeholder="Password repeat..">
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-50">
-        <label for="housenumber">House number</label>
-      </div>
-      <div class="col-50">
-        <input type="number" id="housenumber" name="housenumber" required="required" min=
-        "1" max="1000000" placeholder="House number.."><!--House number can not be negative  -->
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-50">
-        <label for="street">Street</label>
-      </div>
-      <div class="col-50">
-        <input type="text" id="street" name="street" required="required" placeholder="Street..">
-      </div>
-    </div>
-    <div class"row">
-      <div class="col-50">
-        <label for="city">City</label>
-      </div>
-      <div class="col-50">
-        <input type="text" id="city" name="city" required="required"  placeholder="City..">
-      </div>
-    </div>
-    <div class"row">
-      <div class="col-50">
-        <label for="hphone">Home Phone</label>
-      </div>
-      <div class="col-50">
-        <input type="phone" id="hphone" name="hphone" placeholder="Home Phone..">
-      </div>
-    </div>
-    <div class"row">
-      <div class="col-50">
-        <label for="busphone">Business Phone</label>
-      </div>
-      <div class="col-50">
-        <input type="phone" id="busphone" name="busphone" required="required"  placeholder="Business Phone..">
-      </div>
-    </div>
-    <div class"row">
-      <div class="col-50">
-        <label for="emailD">Email Address</label>
-      </div>
-      <div class="col-50">
-        <input type="email" id="emailD" name="emailD" required="required"  placeholder="Email Address..">
-      </div>
-    </div>
-    <div class"row">
-      <div class="col-50">
-        <label for="pcode">Postal Code</label>
-      </div>
-      <div class="col-50">
-        <input type="text" id="pcode" name="pcode" required="required"><p id="message" style="font-size:20px; font-weight:bold; color:red;"></p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-50">
-        <label for="province">Province</label>
-      </div>
-      <div class="col-50">
-        <select onchange="chkother(this,this.options.length,this.options.selectedIndex)" name="province" id="province" class="provinceSelect">
-        <option value="select province" id="province1" selected>Select Province</option>
-        <option value="Alberta" id="province1">Alberta</option>
-        <option value="Bristish Columbia" id="province1">Bristish Columbia</option>
-        <option value="Manitiba" id="province1">Manitiba</option>
-        <option value="Alberta" id="province1">Alberta</option>
-        <option value="New Foundland & Labrador id="province1"">New Foundland & Labrador</option>
-        <option value="Nova Scotia" id="province1">Nova Scotia</option>
-        <option value="Prince Edward Island" id="province1">Prince Edward Island</option>
-        <option value="Quebec" id="province1">Quebec</option>
-        <option value="Saskatchewan" id="province1">Saskatchewan</option>
-        <option value="Other" id="country1">Other</option>
-        </select>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-50">
-        <label for="country">Country</label>
-      </div>
-      <div class="col-50">
-        <select onchange="chkother(this,this.options.length,this.options.selectedIndex)" name="country" id="country" class="countrySelect">
-         <option value="select country" id="country1" selected>Select Country</option>
-         <option value="Canada" id="country1">Canada</option>
-         <option value="United States" id="country1">United States</option>
-         <option value="Mexico" id="country1">Mexico</option>
-         <option value="Other" id="country1">Other</option>
-        </select>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-50">
-        <label for="destination">Travel Destination</label>
-      </div>
-      <div class="col-50">
-        <textarea id="destination" name="destination" placeholder="Write favorite destination.." style="height:150px"></textarea>
-      </div>
-    </div>
-    <div class="row">
-	  <button type="submit" class="pure-button pure-button-primary" onclick="return validate(this.form);">Submit</button>
-	  <button type="reset" class="pure-button pure-button-primary" onclick="return confirm('Do you really want to reset?');">Reset</button>
-    </div>
-   </div>
+</script>
 
-  <script type="text/javascript">
-    var pswd = document.getElementById("pswd");
-    var pwrepeat = document.getElementById("pwrepeat");
+<div id="registerPage" class="registerContainer">
+	<form method="post" action="register1-1.php">
+		<center>
+		<?php
+					if(isset($_SESSION['message'])) {
+						print "<h3 style='color:red, background-color:yellow'>" . $_SESSION['message'] . "</h3>";
+					}
+		?>
+		</center>
+		<div class="form-group">
+			<h3 style="color:red; font-family: Papyrus; font-weight: bold; margin-top: 20px;">Please Register Below</h3>
+		</div>
+		<div class="form-group">
+			<label for="CustFirstName" id="label1">First Name:</label>
+			<input type="text" class="form-control" name="CustFirstName"  id="CustFirstName" placeholder="First name..." required="required">
+		</div>
+		<div class="form-group">
+			<label for="CustLastName" id="label1">Last Name:</label>
+			<input type="text" class="form-control" name="CustLastName"  id="CustLastName" placeholder="Last name..." required="required">
+		</div>
+		<div class="form-group">
+			<label for="CustAddress" id="label1">Address:</label>
+			<input type="text" class="form-control" name="CustAddress"  id="CustAddress" placeholder="Customer address..." required="required">
+		</div>
+		<div class="form-group">
+			<label for="CustCity" id="label1">City:</label>
+			<input type="text" class="form-control" name="CustCity"  id="CustCity" placeholder="City..." required="required">
+		</div>
+		<div class="form-group">
+			<label for="CustProv" id="label1">Province:</label><br />
+			<select class="form-control" name="CustProv" id="CustProv" onchange="chkother(this,this.options.length,this.options.selectedIndex)">
+				<option value="select province" id="CustProv" selected>Select Province</option>
+				<option value="Alberta" id="CustProv" name="CustProv">Alberta</option>
+				<option value="Bristish Columbia" id="CustProv"name="CustProv" >Bristish Columbia</option>
+				<option value="Manitiba" id="CustProv" name="CustProv">Manitiba</option>
+				<option value="Alberta" id="CustProv" name="CustProv">Alberta</option>
+				<option value="New Foundland & Labrador" id="CustProv" name="CustProv">New Foundland & Labrador</option>
+				<option value="Nova Scotia" id="CustProv" name="CustProv">Nova Scotia</option>
+				<option value="Prince Edward Island" id="CustProv" name="CustProv">Prince Edward Island</option>
+				<option value="Quebec" id="CustProv" name="CustProv">Quebec</option>
+				<option value="Saskatchewan" id="CustProv" name="CustProv">Saskatchewan</option>
+				<option value="Other" id="CustProv" name="CustProv">Other</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="CustPostal" id="label1">Postal Code:</label>
+			<input type="text" class="form-control" name="CustPostal"  value="" id="CustPostal" placeholder="Postal code..." required="required">
+			<p id="message" style="font-size:20px; font-weight:bold; color:red;"></p>
+		</div>
+		<div class="form-group">
+			<label for="CustCountry" id="label1">Country:</label>
+			<select class="form-control" name="CustCountry" id="CustCountry" onchange="chkother(this,this.options.length,this.options.selectedIndex)">
+				<option value="select country" id="country1" selected>Select Country</option>
+				<option value="Canada" id="country1" name="CustCountry">Canada</option>
+				<option value="United States" id="country1" name="CustCountry">United States</option>
+				<option value="Mexico" id="country1" name="CustCountry">Mexico</option>
+				<option value="Other" id="country1" name="CustCountry">Other</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="CustHomePhone" id="label1">Home Phone:</label>
+			<input type="phone" class="form-control" name="CustHomePhone"  id="CustHomePhone" placeholder="Home Phone..." required="required">
+		</div>
+		<div class="form-group">
+			<label for="CustBusPhone" id="label1">Business Phone:</label>
+			<input type="phone" class="form-control" name="CustBusPhone"  id="CustBusPhone" placeholder="Business Phone..." required="required">
+		</div>
+		<div class="form-group">
+			<label for="CustEmail" id="label1">Email:</label>
+			<input type="email" class="form-control" name="CustEmail"  id="CustEmail" placeholder="Email..." required="required">
+		</div>
 
-    function passwordValidate() // This function to ensure password and repeat password matches
-      {
-        if(pswd.value != pwrepeat.value)
-          {
-            pwrepeat.setCustomValidity("Password does not match");
-          }
-          else
-          {
-            pwrepeat.setCustomValidity("");
-          }
-      }
-      pswd.onchange = passwordValidate;
-      pwrepeat.onkeyup = passwordValidate;
-  </script>
-  </form>
-  </div>
+		<div class="form-group">
+			<label for="AgentId" id="label1">Agent ID:</label>
+			<select class="form-control" name="AgentId" id="AgentId">
+				<option value="agent ID" id="AgentId" selected>Select agent ID</option>
+				<option value="1" id="AgentId" name="AgentId">1</option>
+				<option value="2" id="AgentId" name="AgentId">2</option>
+				<option value="3" id="AgentId" name="AgentId">3</option>
+				<option value="4" id="AgentId" name="AgentId">4</option>
+				<option value="5" id="AgentId" name="AgentId">5</option>
+				<option value="6" id="AgentId" name="AgentId">6</option>
+				<option value="7" id="AgentId" name="AgentId">7</option>
+				<option value="8" id="AgentId" name="AgentId">8</option>
+				<option value="9" id="AgentId" name="AgentId">9</option>
+				<option value="10" id="AgentId" name="AgentId">10</option>
+				<option value="11" id="AgentId" name="AgentId">11</option>
+				<option value="12" id="AgentId" name="AgentId">12</option>
+				<option value="13" id="AgentId" name="AgentId">13</option>
+				<option value="14" id="AgentId" name="AgentId">14</option>
+				<option value="15" id="AgentId" name="AgentId">15</option>
+				<option value="16" id="AgentId" name="AgentId">16</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label for="UserId" id="label1">User ID:</label>
+			<input type="text" class="form-control" name="UserId"  id="UserId" placeholder="UserId ID..." required="required">
+		</div>
+		<div class="form-group">
+			<label for="UserPassword" id="label1">Password:</label>
+			<input type="UserPassword" class="form-control" name="UserPassword" value="" id="UserPassword" placeholder="Password..." required="required">
+		</div>
+		<div class="checkbox">
+			<label id="label1"><input type="checkbox" name="remember" id="checkbox"> Remember me</label>
+		</div>
+		<button type="submit" class="btn btn-default" name="submit" id="submit1" value="Log In">Register</button>
 
- </body>
-</html>
+	</form>
+</div>
+<?php
+	include "footer.php";
+?>

@@ -1,4 +1,8 @@
-<?php //This code submits customer register data to the database
+<?php
+	session_cache_expire(30);
+	session_start();
+//This code submits customer register data to the database
+
 if(isset($_REQUEST['submit'])){
 //echo $_REQUEST['CustomerId'] . "<br />";
 echo $_REQUEST['CustFirstName']	. "<br />";
@@ -38,11 +42,11 @@ $mysqli = new mysqli("localhost", "PeterOganwu", "emeka12pc", "travelexperts");
 // Check connection
 if ($mysqli->connect_error) {
     die("Connection failed: " . $mysqli->connect_error);
-} 
+}
 
-$sql = "INSERT INTO customers(CustFirstName, CustLastName, CustAddress, CustCity, CustProv, CustPostal, CustCountry, CustHomePhone, 
+$sql = "INSERT INTO customers(CustFirstName, CustLastName, CustAddress, CustCity, CustProv, CustPostal, CustCountry, CustHomePhone,
 CustbusPhone, CustEmail, AgentId, UserId, UserPassword)
-VALUES ('$custfirstname','$custlastname','$custaddress', '$custcity', '$custprov', '$custpostal', '$custcountry','$custhomephone', 
+VALUES ('$custfirstname','$custlastname','$custaddress', '$custcity', '$custprov', '$custpostal', '$custcountry','$custhomephone',
 '$custbusphone', '$custemail', '$agentid', '$userid', '$password')";
 
 if ($mysqli->query($sql) === TRUE) {
@@ -52,6 +56,7 @@ if ($mysqli->query($sql) === TRUE) {
 }
 
 $mysqli->close();
+
+$_SESSION["message"] = "New record created successfully";
+header("Location: register.php");
 ?>
-
-

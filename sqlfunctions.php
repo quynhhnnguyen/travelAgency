@@ -1,7 +1,9 @@
 <?php
 	/*
-		Author: Quynh Nguyen (queeniehnnguyen)
-		Date created: Nov - 14 - 2018.
+		Author: Quynh Nguyen (Queenie)
+		Date created: Nov - 16 - 2018.
+		Course Module: CPRG-210-OSD - Web Application Development - PHP and MySQL
+		Assignment#: CPRG210 Exercises Day 10
 		Summary: implement all activities on database.
 	*/
 	
@@ -12,30 +14,44 @@
 	
 	$dbh = null;
 	
-	//getDBConnection();
-	
-	//initialize database connection
+	/* 
+		initialize database connection
+	*/
 	function getDBConnection() {
+	
 		global $dbh;
+
 		if(!$dbh) {
 			$dbh = mysqli_connect("localhost", "sa", "sa", "travelexperts");
 			if(!$dbh) {
-				print("Connection failed: " . mysqli_connect_errno() . "--" . mysqli_connect_error() . "<br/>");
+				print("Connection failed: " . mysqli_connect_errno($dbh) . "--" . mysqli_connect_error($dbh) . "<br/>");
 				exit;
 			}
 		} else {
-			//print "<br/>Connection: "; //. $dbh;
+			//db connection exists, do not need to create again.
 		}
 		
 	}
 
+	/*
+		close database connection
+	*/
 	function closeDBConnection() {
 		global $dbh;
 		if($dbh) {
+			/*if(mysqli_close($dbh)) {
+				print "Close successfull else {";
+			} else {
+				print "Cannot Close successfull else {";
+			}	*/
 			mysqli_close($dbh);
+			$dbh = null;
 		}
 	}
 	
+	/*
+		Get list of Agency from database
+	*/
 	function getAgenciesInfo() {
 		global $dbh;
 		$agencies = array();
@@ -47,37 +63,68 @@
 			$result = mysqli_query($dbh, $sql);
 			
 			if(!$result) {
-				print("Query failed: " . mysql_errno() . "--" . mysql_error() . "<br/>");
+				print("Query failed: " . mysqli_errno($dbh) . "--" . mysqli_error($dbh) . "<br/>");
 				exit();
 			}
 			
 			while ($values = mysqli_fetch_object($result)) {
-				//print "Value: -------------------<br/>";
-				//print_r($values);
-				//print "Agency Object: -------------------<br/>";
 				$agency = new Agency();
 				$agency -> setAgency($values);
-				//print_r($agency);
-				//print "-------------------<br/>";
 				array_push($agencies, $agency);
 			}
-			//print "-------------------<br/>";
-			//print_r($agencies);
+
 			return $agencies;
+			
 		} catch (Exception $e){
 			print "<br/> $e";
 		} finally {
-			//closeDBConnection();
+			closeDBConnection();
 		}
 	}
 	
+	/*
+		Get list of Agency(AgencyId, Agency-Name) from database
+	*/
+	function getAgencyListForDropdownCom() {
+		global $dbh;
+		$agencies = array();
+		
+		$sql = "SELECT AgentId, AgncyCity FROM Agencies";
+		try {
+			getDBConnection();
+			
+			$result = mysqli_query($dbh, $sql);
+			
+			if(!$result) {
+				print("Query failed: " . mysqli_errno($dbh) . "--" . mysqli_error($dbh) . "<br/>");
+				exit();
+			}
+			
+			while ($values = mysqli_fetch_object($result)) {
+				$agency = new Agency();
+				$agency -> setAgency($values);
+				array_push($agencies, $agency);
+			}
+
+			return $agencies;
+			
+		} catch (Exception $e){
+			print "<br/> $e";
+		} finally {
+			closeDBConnection();
+		}
+	}
+	
+	/*
+		Get list of Agent from database
+	*/
 	function getAgentsInfo() {
 		global $dbh;
 		$agents = array();
 		
 		
 		$sql = "SELECT A.*, (SELECT B.AgncyCity FROM Agencies AS B WHERE B.AgencyId=A.AgencyId) as AgencyName
-FROM agents AS A";
+				FROM agents AS A";
 
 		try {
 			getDBConnection();
@@ -85,58 +132,65 @@ FROM agents AS A";
 			$result = mysqli_query($dbh, $sql);
 			
 			if(!$result) {
-				print("Query failed: " . mysql_errno() . "--" . mysql_error() . "<br/>");
+				print("Query failed: " . mysqli_errno($dbh) . "--" . mysqli_error($dbh) . "<br/>");
 				exit();
 			}
 			
 			while ($values = mysqli_fetch_object($result)) {
-				//print "Value: -------------------<br/>";
-				//print_r($values);
-				//print "Agency Object: -------------------<br/>";
 				$agent = new Agent();
 				$agent -> setAgent($values);
-				
-				//print_r($agent);
-				//print "-------------------<br/>";
 				array_push($agents, $agent);
 			}
-			//print "-------------------<br/>";
-			//print_r($agents);
+
 			return $agents;
+			
 		} catch (Exception $e){
 			print "<br/> $e";
 		} finally {
-			//closeDBConnection();
+			closeDBConnection();
 		}
 	}
 	
+	
+	/*
+		Get User Information via inputted User Name.
+		Return UserAccount object.		
+	*/
 	function getUserAccountInfo($userName) {
 	
 		global $dbh;
-		$accounts = array();
+		$userAccount = new UserAccount();
+
 		
-		$sql = "SELECT userName, password, roleId FROM Agents WHERE userName = ?";
+		$sql = "SELECT userName, password, roleId FROM agents WHERE userName = '" . $userName . "'";
 		try {
 			getDBConnection();
 			
-			$stmt = mysqli_prepare($dbh, $sql);
+			/*$stmt = mysqli_prepare($dbh, $sql);
 
-			mysqli_stmt_bind_param($stmt, "ssss", $userName);
+			mysqli_stmt_bind_param($stmt, "s", $userName);*/
 			
-			$result = mysqli_stmt_execute($stmt);
+			$result = mysqli_query($dbh, $sql);
 			
 			if(!$result) {
-				print("Query failed: " . mysql_errno() . "--" . mysql_error() . "<br/>");
+				print("Query failed: " . mysqli_errno($dbh) . "--" . mysqli_error($dbh) . "<br/>");
 				exit();
 			}
 			
+			/*$_SESSION["message"] .= print_r($stmt);
+			$result = mysqli_stmt_execute($stmt);*/
+			
 			while ($values = mysqli_fetch_object($result)) {
-				$userAccount = new UserAccount();
-				$userAccount -> setUserAccount($value);
-				array_push($accounts, $userAccount);
+				$userAccount -> setUserAccount($values);
+				break;
 			}
+			
+			print_r($userAccount);
 
-			return $accounts;
+			if($userAccount -> userName == "") {
+				return null;
+			}
+			return $userAccount;
 		} catch (Exception $e){
 			print "<br/> $e";
 		} finally {
@@ -151,7 +205,7 @@ FROM agents AS A";
 				which Key is Column Name in database.
 				      Value is the value to insert to database.
 		return true - insert data successful.
-			   false - some error may happen.
+			   false - some errors may happen.
 	*/
 	function insertDatatoBD($table, $data) {
 		global $dbh;
@@ -166,11 +220,9 @@ FROM agents AS A";
 			
 			if($table == null) {
 				print("Data failed: Missing table Name <br/>");
-				return;
+				return false;
 			}
 
-			//print("<br/> \$data");
-			//print_r($data);
 			$values = $data -> getValues();
 			
 			$cols = implode(',', $data -> getColumnsName());
@@ -183,9 +235,8 @@ FROM agents AS A";
 			
 			$result = mysqli_real_query($dbh, 'INSERT INTO '.$table.' ('.$cols.') VALUES ('.$vals.')');
 			if(!$result) {
-				//mysql_
-				print "Cannot insert data to Database.";
-				return false;
+				print("Query failed: " . mysqli_errno($dbh) . "--" . mysqli_error($dbh) . "<br/>");
+				exit();
 			}
 			
 			return true;
@@ -194,7 +245,16 @@ FROM agents AS A";
 		} finally {
 			closeDBConnection();
 		}
-		//return mysqli_real_query($dbh, 'INSERT INTO '.$table.' ('.$cols.') VALUES ('.$vals.')');
+
+	}
+	
+	/*
+		Add New Agent
+	*/
+	function addNewAgentToDB($data) {
+		print "<br/>\$data: ";
+		print_r($data);
+		return insertDatatoBD("agents", $data) ;
 	}
 	
 	/*
