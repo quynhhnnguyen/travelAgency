@@ -13,11 +13,8 @@
 	include "header.php";
 	
 	//set value to activeTab by session variable
-	//session_cache_expire(30);
 	$_SESSION["activeTab"] = "homeTab";
-	
-	//print_r($_SESSION);
-	
+
 	//navigations
 	include "menu.php";
 	
@@ -32,8 +29,11 @@
 		?>
 	</center>
 	<div id="loginSection" class="contentPaddingDiv col-sm-7 slideanim slide loginSection container-fluid">
-		
-		<p>Enter User-Name and Password to log into "Dream Land Travel Agency" System.</p>
+		<center>
+			<p>Enter User-Name and Password to log into "Dream Land Travel Agency" System.</p>
+			<br/>
+			<p>In case, you haven't got log-in account yet, please Sign Up and experience our services.</p>
+		</center>
 		<form method="post" id="loginForm" action="functions.php">
 			<div>
 				<p id="tipError" style="display:none">UserName/ Password is incorrect. Please try again!</p>
@@ -50,7 +50,8 @@
 									placeholder="Password">
 						</div>
 						<div class="input-group" style="padding-top:5px">
-							<input type="submit" class="btn btn-primary" value="Log In" id="submit" onclick="<?php $_SESSION['message'] = "";?>"/>							
+							<input type="submit" class="btn btn-primary" value="Log In" id="submit"/>		
+							<input type="submit" class="btn btn-primary" value="Sign Up" id="signup" onclick="signup();"/>		
 						</div>			
 					</div>
 			</div>
@@ -62,6 +63,12 @@
 <br/>
 <br/>
 
+<script>
+	function signup() {
+		document.getElementById("action").value="signup";
+		document.getElementById("loginForm").submit();
+	}
+</script>
 <!-- footer -->		
 <?php
 	include "footer.php";

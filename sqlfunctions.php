@@ -11,7 +11,7 @@
 	require_once('modal/Agency.php');
 	require_once('modal/Agent.php');
 	require_once('modal/UserAccount.php');
-	
+	require_once('modal/Packages.php');
 	$dbh = null;
 	
 	/* 
@@ -151,6 +151,37 @@
 		}
 	}
 	
+	function getPackagesInfo() {
+		global $dbh;
+		$packages = array();
+		
+		
+		$sql = "SELECT PkgName, PkgStartDate, PkgEndDate, PkgDesc, PkgBasePrice FROM packages";
+
+		try {
+			getDBConnection();
+			
+			$result = mysqli_query($dbh, $sql);
+			
+			if(!$result) {
+				print("Query failed: " . mysqli_errno($dbh) . "--" . mysqli_error($dbh) . "<br/>");
+				exit();
+			}
+			
+			while ($values = mysqli_fetch_object($result)) {
+				$package = new Package();
+				$package -> setPackage($values);
+				array_push($packages, $package);
+			}
+
+			return $packages;
+			
+		} catch (Exception $e){
+			print "<br/> $e";
+		} finally {
+			closeDBConnection();
+		}
+	}
 	
 	/*
 		Get User Information via inputted User Name.

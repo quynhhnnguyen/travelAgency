@@ -12,6 +12,9 @@
 	require_once('variables.php');
 	require_once('modal/Agent.php');
 	require_once('sqlfunctions.php');
+	require_once('modal/Packages.php');
+	
+	$nextPage = isset($_SESSION['nextPage']) ? $_SESSION['nextPage'] : null;
 
 	$action = isset($_POST['action'])?$_POST['action']:
 			(isset($_POST['action1'])?$_POST['action1']:$_SESSION['action']);
@@ -26,6 +29,9 @@
 		case "addNewAgent":
 			addNewAgent();
 			break;
+		case "signup":
+			redirectPage("register.php", "");
+			break;
 		case "authentication":
 			authentication();
 			break;
@@ -35,6 +41,7 @@
 			redirectPage("mainpage.php", "");
 			break;
 		case "login":
+			//if user already logged into system, redirect to nextPage directly instead of login page.
 			redirectPage("login.php", "");
 			break;
 		case "tabClicked":
@@ -147,6 +154,8 @@
 	function authentication() {
 	
 		global $roles;
+		global $nextPage;
+		
 		$logInInfo = array("userName" => "", "password" => "");
 		$inputValues = getDataForm($logInInfo);
 	
@@ -175,7 +184,11 @@
 			switch($accountDB -> roleId) {
 				case $roles['Admin']: //redirect to Agent Entry Page (Home Page & active Agent Entry link)
 					$_SESSION['logged-in'] = true;
-					redirectPage("agententry.php", "");
+					//if(!$nextPage) {
+						//redirectPage($nextPage, "");
+					//} else {
+						redirectPage("agententry.php", "");
+					//}
 					break;
 				case $roles['End-User']: //redirect to Home Page & active the profile link
 					break;
