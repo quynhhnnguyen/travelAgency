@@ -28,7 +28,7 @@
 				</div>
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<form id="tabsForm" action="functions.php" method="post">
-						<input type="hidden" name="action" id="action" value="tabClicked"/>
+						<input type="hidden" name="actionTab" id="actionTab" value="tabClicked"/>
 						<input type="hidden" name="tabURL" id="tabURL"/>
 						<ul class="nav navbar-nav navbar-right">
 							<?php
