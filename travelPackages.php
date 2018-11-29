@@ -1,13 +1,4 @@
 <?php
-/*$dbh = mysqli_connect("localhost", "sa", "sa", "travelexperts");
-if (!$dbh)
-{
-	print("Connection failed: " . mysqli_connect_errno() . "--" .mysqli_connect_error() . "<br />");
-	exit();
-}*/
-?>
-
-<?php
 	/*
 		Author: Yatri Patel
 		Date created: Nov - 14 - 2018.
@@ -79,16 +70,26 @@ if (!$dbh)
 	<tr>
 		<td>
 			<div>
-				<div class="btn">
-				<button type="button" style="margin:20px; color:black; height:40px; width:90px"><b> Order </b> </button>
-				</button>
-				</div>
+				<form id="order" method="post" action="functions.php">
+					<input type="hidden" name="nextPage" id="nextPage" value="booking"/>
+					<button type="submit" style="margin:20px; color:black; height:40px; width:90px" onclick="submit();"><b> Order </b> </button>
+				</form>
+				
 			</div>
 		</td>	
 	</tr>
 	</table>
 
 </div>	
+
+<script>
+	function submit() {
+		if(document.getElementById("action")) {
+			document.getElementById("action").value = "order";
+		}
+		document.getElementById("order").submit();
+	}
+</script>
 <!-- <div><a href="mainPage.php" >Back to Home Page</a></div>		 -->
 <!-- footer -->		
 <?php
