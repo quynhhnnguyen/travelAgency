@@ -58,7 +58,7 @@ if ($mysqli->query($sql) === TRUE) {
 $mysqli->close();
 
 $_SESSION["message"] = "New record created successfully";
-header("Location: userlogin1.php");
+header("Location: register.php");
 ?>
 
 

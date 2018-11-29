@@ -37,6 +37,9 @@
 		case "login":
 			redirectPage("login.php", "");
 			break;
+		case "tabClicked":
+			redirectPage($_POST["tabURL"], "");
+			break;
 	}	
 	
 	/*

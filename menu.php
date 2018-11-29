@@ -10,6 +10,8 @@
 			Registrations
 			Contact Us
 	*/
+	
+	require_once('variables.php');
 ?>
 		<nav class="navbar navbar-default">
 			<div class="container">
@@ -25,45 +27,52 @@
 					</a>
 				</div>
 				<div class="collapse navbar-collapse" id="myNavbar">
-					<ul class="nav navbar-nav navbar-right">
-						<?php
-							//print $_SESSION["activeTab"]; 
-							//Home
-							if ($_SESSION["activeTab"]=="homeTab" || $_SESSION["activeTab"]=="") {
-								$_SESSION["activeTab"] = "homeTab";
-								print "<li class=\"active\"><a href=\"mainPage.php\">HOME</a></li>";
-							} else {
-								print "<li><a href=\"mainPage.php\">HOME</a></li>";
-							}
+					<form id="tabsForm" action="functions.php" method="post">
+						<input type="hidden" name="action" id="action" value="tabClicked"/>
+						<input type="hidden" name="tabURL" id="tabURL"/>
+						<ul class="nav navbar-nav navbar-right">
+							<?php
+								//print $_SESSION["activeTab"]; 
+								global $aTabs;
+								global $aAdminTabs;
+								$tabStyle = "";
+								$login = isset($_SESSION['logged-in'])?$_SESSION['logged-in']:false;
+								
+								foreach($aTabs as $tab) {
+									//Home
+									if( $_SESSION["activeTab"]=="") {
+										$_SESSION["activeTab"] = "homeTab";
+									} 
+									
+									if(!$login && in_array($tab["tabId"], $aAdminTabs)) {
+										continue;
+									}
+									
+									if ($_SESSION["activeTab"]==$tab["tabId"]) {
+										$tabStyle = "class=\"active\"";
+									} else {
+										$tabStyle = "";
+									}
+									print "<li " . $tabStyle . "><a href=\"javascript: changeTab('" . 
+													$tab["tabURL"] . "')\">" . $tab["tabName"] . "</a></li>";
+									
+								}
+								
+								
+							?>
 							
-							//travel packages
-							if ($_SESSION["activeTab"]=="travelPackagesTab") {
-								$_SESSION["activeTab"] = "travelPackagesTab";
-								print "<li class=\"active\"><a href=\"travelPackages.php\">Travel Packages</a></li>";
-							} else {
-								print "<li><a href=\"travelPackages.php\">Travel Packages</a></li>";
-							}
-							
-							//registrations
-							if ($_SESSION["activeTab"]=="registerTab") {
-								$_SESSION["activeTab"] = "registerTab";
-								print "<li class=\"active\"><a href=\"register.php\">Registrations</a></li>";
-							} else {
-								print "<li><a href=\"register.php\">Registrations</a></li>";
-							}
-							
-							//contact
-							if ($_SESSION["activeTab"]=="contactTab") {
-								$_SESSION["activeTab"] = "contactTab";
-								print "<li class=\"active\"><a href=\"contact.php\">Contact Us</a></li>";
-							} else {
-								print "<li><a href=\"contact.php\">Contact Us</a></li>";
-							}
-						?>
-						
-					</ul>
+						</ul>
+					</form>
 				</div>
 			</div>
 		</nav>
-		
+	
+		<script>
+			function changeTab($tabURLVal) {
+				document.getElementById("tabURL").value = $tabURLVal;
+				//alert();
+				document.getElementById("tabsForm").submit();
+
+			}
+		</script>
 		
