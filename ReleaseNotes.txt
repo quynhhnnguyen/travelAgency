@@ -1,0 +1,57 @@
+/****************************************************************************************/
+Customer: Dream Land Travel Agency.
+
+Group of Developers:
+	- Maryam Munir.
+	- Peter Oganwu.
+	- Quynh Nguyen (Queenie).
+	- Yatri Patel.
+/****************************************************************************************/
+	
+Project: Travel Agency Website.
+Release 1 (Phase 1):
+	- Release Date: Dec-03-2018.
+	- Techniques: HTML, CSS, JavaScript, PHP.
+	- Database: MySQL.
+	- Build the responsive and user-friendly Website which supports features such as
+		+ Home Page: 
+			* Introduce about Dream Land Travel Agency.
+			* Do Slide-show to show Agency's Activities.
+			* Provide Navigations to access to Suppliers Page, Booking Page, Travel Packages Page, Registeration Page, Contact Us Page and Log in Page. 
+		+ Travel Packages Page:
+			* Display all available travel packages including their detail for each package.
+			* Provide Booking feature via "Book" button.
+		+ Registration Page:
+			* Let Customer(s) register their account to Dream Land system for booking travel package(s).
+		+ Contact Us Page:
+			* Provide Agenc(ies) and Agent(s) information as well.
+			* Allow customer(s) send their question(s) to our service.
+		+ Log-in Page:
+			* Let Customer(s) do booking and some features (which are enhanced in next phase(s)).
+			* Let Agent with Admin Role add new Agent Information and some future administration feature(s).
+		+ Suppliers Page:
+			* Provide Dream Land's suppliers' information.
+		+ Booking Page:
+			* Support Customer(s) on registering their travel package(s).
+
+	- Database change:
+		+ Input Database's account which has Admin role to "properties.txt", then system can use to connect to database system.
+		+ Run "sql.bat" to add neccessary data to database automatically.
+		+ Or copy "sql statement(s)" from "sql_adjustment.sql" and run them manually.
+		
+	- Website URL: http://domain_name/mainpage.php
+	
+Some feature(s) would be done after this release.
+	- Develop mobile app.
+	- Support log-in to Dream Land system by social account such as Facebook, Twitter, Instagram ....
+	- Provide features for Agent to 
+		+ add/ edit Travel Package(s) information.
+		+ add/ edit Supplier(s) information.
+		+ view Sales Report(s) which related to Commission, Sales ...
+	- Provide report(s) to let registered Customer to view their information about their travel history with Dream Land and reward(s) which they got or being eligible ...
+	- Promotions Page.
+
+Let enjoy and experience the pilot features of this website.	
+
+THANK IN ADVANCE!
+Developer Team.

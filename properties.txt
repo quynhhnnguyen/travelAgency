@@ -1,0 +1,8 @@
+/*
+    Please change value of db-account-id and db-account-password
+    Then, this Website can retrive information from database
+    E.g. db-account-id:admin;
+	 db-account-password:admin;
+*/
+db-account-id:sa;
+db-account-password:sa;
