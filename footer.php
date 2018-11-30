@@ -3,7 +3,6 @@
 		Author: Quynh Nguyen (Queenie)
 		Date created: Nov - 15 - 2018.
 		Course Module: CPRG-210-OSD - Web Application Development - PHP and MySQL
-		Assignment#: CPRG210 Exercises Day 9
 		Summary: construct the Footer Section.
 	*/
 ?>

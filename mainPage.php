@@ -1,18 +1,9 @@
 <!-- header -->
 <?php
 	/*
-		Initialized by: Quynh Nguyen
+		Initialized by:  Maryam Munir
 		Date created: Nov - 14 - 2018.
 		Course Module: CPRG-210-OSD - Web Application Development - PHP and MySQL
-		Assignment#: CPRG210 Exercises Day 8
-
-		Modified: Nov - 15 - 2018.
-		Assignment#: CPRG210 Exercises Day 9
-				(Separated header, footer, menu to different php files & include them back via include function)
-
-		Modified: Maryam Munir
-		Date modified: Nov - 19 - 2018.
-
 		Summary: Home Page.
 	*/
 	session_cache_expire(30);
@@ -53,15 +44,15 @@ the Images Please consider the dimentions Thanks-->
 <div class="slideshow-container">
 
 <div class="mySlides fade">
-   <img class="slideImg" src="img/France.jpg" style="width:80%;margin-left: 10%">
+   <img class="slideImg" src="/img/France.jpg" style="width:80%;margin-left: 10%">
   </div>
 
 <div class="mySlides fade">
-  <img class="slideImg" src="img/Ibiza.jpg" style="width:80%;margin-left: 10%">
+  <img class="slideImg" src="/img/Ibiza.jpg" style="width:80%;margin-left: 10%">
 </div>
 
 <div class="mySlides fade">
-  <img class="slideImg" src="img/Amsterdam.jpg" style="width:80%;margin-left: 10%">
+  <img class="slideImg" src="/img/Amsterdam.jpg" style="width:80%;margin-left: 10%">
 </div>
 
 </div>

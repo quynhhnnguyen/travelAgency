@@ -3,7 +3,6 @@
 		Author: Quynh Nguyen (Queenie)
 		Date created: Nov - 19 - 2018.
 		Course Module: CPRG-210-OSD - Web Application Development - PHP and MySQL
-		Assignment#: CPRG210 Exercises Day 10
 		Summary: implement common functions.
 	*/
 	session_cache_expire(30);
