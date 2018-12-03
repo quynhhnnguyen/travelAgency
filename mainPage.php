@@ -1,7 +1,7 @@
 <!-- header -->
 <?php
 	/*
-		Initialized by:  Maryam Munir
+		Author:  Maryam Munir
 		Date created: Nov - 14 - 2018.
 		Course Module: CPRG-210-OSD - Web Application Development - PHP and MySQL
 		Summary: Home Page.
@@ -44,15 +44,19 @@ the Images Please consider the dimentions Thanks-->
 <div class="slideshow-container">
 
 <div class="mySlides fade">
-   <img class="slideImg" src="/img/France.jpg" style="width:80%;margin-left: 10%">
+   <img class="slideImg" src="img/ce.jpg" style="width:80%;margin-left: 10%">
   </div>
 
 <div class="mySlides fade">
-  <img class="slideImg" src="/img/Ibiza.jpg" style="width:80%;margin-left: 10%">
+  <img class="slideImg" src="img/p.jpg" style="width:80%;margin-left: 10%">
 </div>
 
 <div class="mySlides fade">
-  <img class="slideImg" src="/img/Amsterdam.jpg" style="width:80%;margin-left: 10%">
+  <img class="slideImg" src="img/d1.jpg" style="width:80%;margin-left: 10%">
+</div>
+
+<div class="mySlides fade">
+  <img class="slideImg" src="img/b3.jpg" style="width:80%;margin-left: 10%">
 </div>
 
 </div>
@@ -62,6 +66,7 @@ the Images Please consider the dimentions Thanks-->
   <span class="dot"></span>
   <span class="dot"></span>
   <span class="dot"></span>
+	<span class="dot"></span>
 </div>
 
 <script>
@@ -116,8 +121,8 @@ function showSlides() {
 				<td id="td1">
 						 <b> Trusted and free </b> <br/><br/>
 						 <div id="td1">
-							We’re completely free to use – no hidden charges or fees – and we’re
-							endorsed by Frommer’s, CNN and the New York Times.
+							We�re completely free to use � no hidden charges or fees � and we�re
+							endorsed by Frommer�s, CNN and the New York Times.
 							</div>
 				</td>
 		</tr>
@@ -125,12 +130,15 @@ function showSlides() {
 <br/>
 	<div>
 			We believe that travel is not a reward for working, but the most valuable and impactful form of education for life.
-			We aren’t just a travel company; we were built to introduce you to the rest of the world. Carlisle Tacone Travel is about more
+			We aren�t just a travel company; we were built to introduce you to the rest of the world. Carlisle Tacone Travel is about more
 			than just going on a trip. We connect you with people and offer experiences that will change the way you view the world. Travel reminds us what is truly important: family, friendship, love, exploration and adventure. We understand how much you
 			can grow when you step out of your comfort zone.
 	</div>
 </div>
 
+<br /><p>
+	Our
+<a href="http://localhost/supplier.php">Suppliers</a> Information for Customers.</p>
 <!-- footer -->
 <?php
 	include "footer.php";
